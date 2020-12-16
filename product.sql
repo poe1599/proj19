@@ -38,3 +38,4 @@ INSERT INTO `member` (`member_sid`, `email`, `account`, `password`) VALUES
 (NULL, 'joker@gmail.com', 'joker', SHA1('123456')),
 (NULL, 'admin@gmail.com', 'admin', SHA1('123456')),
 (NULL, 'yeh@gmail.com', 'yeh', SHA1('123456'))
+
