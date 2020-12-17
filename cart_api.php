@@ -12,3 +12,9 @@ $member = $_SESSION['member']['member_sid'];
 $sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1";
 $stmt = $pdo->query($sql);
 $row = $stmt->fetchall();
+
+// 購物車總花費計算
+$total_cost = 0;
+foreach ($row as $r) {
+    $total_cost += $r['price'];
+}

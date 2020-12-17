@@ -51,8 +51,9 @@
                 </tbody>
             </table>
             <div class="row d-flex justify-content-between">
-                <a class="btn">$NTD: <span id='total_cost'>0</span></a>
-                <button type="button" class="btn btn-primary">結帳</button>
+                <!-- <a class="btn">$NTD: <?= $total_cost ?></a> -->
+                <h4>$NTD: <?= $total_cost ?></h4>
+                <button type="button" class="btn btn-primary" onclick="check_all()">結帳</button>
             </div>
         </div>
     </div>
@@ -65,7 +66,6 @@
     function del_all() {
         if (confirm(`是否要取消全部訂單?`)) {
             location.href = 'order_delete.php?del_all=1';
-
         }
     }
 
@@ -73,6 +73,13 @@
     function del_it(order_sid) {
         if (confirm(`是否要取消 ${order_sid} 號訂單?`)) {
             location.href = 'order_delete.php?order_sid=' + order_sid;
+        }
+    }
+
+    // 訂單結帳
+    function check_all() {
+        if (confirm(`是否要完成結帳?`)) {
+            location.href = 'order_delete.php?check_all=1';
         }
     }
 </script>
