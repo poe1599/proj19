@@ -40,32 +40,34 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
             <!-- 登入畫面 -->
             <?php if (isset($_SESSION['member'])) : ?>
                 <!-- 如果已經有登入的session -->
+                <div class="d-flex justify-content-center my-5">
+                    <img src="./uploads/member/<?= $_SESSION['member']['avatar'] ?>" alt="" id="preview" onclick="avatar.click()" style="width: 300px; min-height: 100px; background-color: #fff;">
+                </div>
                 <div>
                     <h3>你好, <?= $_SESSION['member']['account'] ?>!</h3>
-                    <img src="./img/member/<?= $_SESSION['member']['account'] ?>.png" class="card-img-top my-5 px-5 w-100" alt="...">
                     <p><a href="logout.php">Log out</a></p>
                 </div>
 
             <?php else : ?>
                 <!-- 如果還沒有登入的session -->
                 <!-- htmlentities() PHP中用來跳脫html的特殊字元 -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">登入</h5>
-                        <form method="POST">
-                            <div class="form-group">
-                                <label for="account">Account</label>
-                                <input type="text" class="form-control" id="account" name="account" value="<?php echo htmlentities($_POST["account"] ?? "") ?>">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" value="<?php echo htmlentities($_POST["password"] ?? "")  ?>">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Log in</button>
-                        </form>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">登入</h5>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="account">Account</label>
+                            <input type="text" class="form-control" id="account" name="account" value="<?php echo htmlentities($_POST["account"] ?? "") ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" value="<?php echo htmlentities($_POST["password"] ?? "")  ?>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                    </form>
                 </div>
+
             <?php endif ?>
         </div>
 

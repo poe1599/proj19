@@ -23,6 +23,9 @@
                     <li class="nav-item <?= $pageName == 'cart' ? 'active' : '' ?>">
                         <a class="nav-link" href="./cart.php">購物車</a>
                     </li>
+                    <li class="nav-item <?= $pageName == 'member_edit' ? 'active' : '' ?>">
+                        <a class="nav-link" href="./member_edit.php"><?= $_SESSION['member']['nickname'] ?></a>
+                    </li>
                     <li class="nav-item <?= $pageName == 'logout' ? 'active' : '' ?>">
                         <a class="nav-link" href="./logout.php">Logout</a>
                     </li>
@@ -30,8 +33,8 @@
                     <li class="nav-item <?= $pageName == 'login' ? 'active' : '' ?>">
                         <a class="nav-link" href="./login.php">Login</a>
                     </li>
-                    <li class="nav-item <?= $pageName == 'login' ? 'active' : '' ?>">
-                        <a class="nav-link" href="./login.php">Register</a>
+                    <li class="nav-item <?= $pageName == 'register' ? 'active' : '' ?>">
+                        <a class="nav-link" href="./register.php">Register</a>
                     </li>
                 <?php endif ?>
 
