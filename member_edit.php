@@ -48,7 +48,7 @@ $title = '編輯會員資料';
                             <input type="text" class="form-control" id="new_password" name="new_password" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">password</label>
+                            <label for="password">Old password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="d-flex justify-content-between">

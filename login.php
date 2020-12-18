@@ -44,7 +44,7 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
                     <img src="./uploads/member/<?= $_SESSION['member']['avatar'] ?>" alt="" id="preview" onclick="avatar.click()" style="width: 300px; min-height: 100px; background-color: #fff;">
                 </div>
                 <div>
-                    <h3>你好, <?= $_SESSION['member']['account'] ?>!</h3>
+                    <h3>你好, <?= $_SESSION['member']['nickname'] ?>!</h3>
                     <p><a href="logout.php">Log out</a></p>
                 </div>
 
@@ -64,7 +64,10 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" value="<?php echo htmlentities($_POST["password"] ?? "")  ?>">
                         </div>
-                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <div class="d-flex justify-content-between">
+                            <a href="./register.php"><button type="button" class="btn btn-secondary">Register </button></a>
+                            <button type="submit" class="btn btn-primary">Log in</button>
+                        </div>
                     </form>
                 </div>
 

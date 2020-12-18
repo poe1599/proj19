@@ -20,56 +20,82 @@ $ext_map = [
     'image/gif' => '.gif',
 ];
 
-// 設一個空陣列, 準備裝要修改資料
-$fields = [];
-
-// $pdo->quote($_POST['nickname'])跳脫表單送來的值, 接到`nickname`="的後面, 再送到$fields[]這個陣列中
-$fields[] = "`nickname`=" . $pdo->quote($_POST['nickname']);
-
-// 有沒有要改密碼
-if (!empty($_POST['new_password'])) {
-    // $pdo->quote($_POST['new_password'])跳脫表單送來的值, 用sprintf()取代%s, 再送到$fields[]這個陣列中
-    $fields[] = sprintf("`password`=SHA1(%s)", $pdo->quote($_POST['new_password']));
+// 檢查帳號密碼暱稱信箱是否有未填寫
+if (empty($_POST['account']) || empty($_POST['password']) || empty($_POST['nickname']) || empty($_POST['email'])) {
+    $output['code'] = 400;
+    $output['error'] = '尚有未填寫的欄位';
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+    exit;
+}
+if (empty($_POST['avatar'])) {
+    $_POST['avatar'] = null;
 }
 
-// 有沒有上傳圖
-if (!empty($_FILES) and !empty($_FILES['avatar']['type']) and $ext_map[$_FILES['avatar']['type']]) {
-    $output['file'] = $_FILES;
-
-    // 新亂數名稱與副檔名
-    $filename = uniqid() . $ext_map[$_FILES['avatar']['type']];
-    $output['filename'] = $filename;
-    // 實際執行上傳檔案, 如果有上傳, 將"`avatar`= '$filename' "這個字串送到$fields[]這個陣列中
-    if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_folder . '/' . $filename)) {
-        $fields[] = "`avatar`= '$filename' ";
+// 帳號驗證, 抓SQL內的資料出來比對是否曾註冊
+$m_sql = "SELECT * FROM `member`";
+$m_stmt = $pdo->query($m_sql);
+$m_rows = $m_stmt->fetchAll();
+foreach ($m_rows as $r) {
+    if ($r['account'] == $_POST['account']) {
+        $output['code'] = 400;
+        $output['error'] = '帳號已註冊';
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }
-// implode()把陣列$fields內的值用','接起來, 靠sprintf()取代字串中的%s, 形成新字串
-$sql = sprintf("UPDATE `member` SET %s WHERE `member_sid`=? AND `password`=SHA(?) ", implode(',', $fields));
 
-$output['sql'] = $sql;
-
-// 先做$pdo->prepare($sql), 然後execute()把原先$sql中有?的地方替換並在資料庫上執行SQL語法
-$stmt = $pdo->prepare($sql);
-$stmt->execute([
-    $_SESSION['member']['member_sid'],
-    $_POST['password'],
-]);
-
-// 如果$stmt資料只有1筆
-if ($stmt->rowCount() == 1) {
-    $output['success'] = true;
-    unset($output['error']);
-    // 更新 session
-
-    // 將更新的資料庫紀錄拿出來, 更新$_SESSION['member']內的紀錄
-    $_SESSION['member'] = $pdo->query("SELECT * FROM `member` WHERE `member_sid`=" . intval($_SESSION['member']['member_sid']))->fetch();
-
+// 信箱驗證, 是否符合格式
+$email_re = '/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i';
+if (!preg_match($email_re, $_POST['email'])) {
+    $output['code'] = 400;
+    $output['error'] = 'Email 格式錯誤';
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
+// 信箱驗證, 抓SQL內的資料出來比對是否曾註冊
+$m_sql = "SELECT * FROM `member`";
+$m_stmt = $pdo->query($m_sql);
+$m_rows = $m_stmt->fetchAll();
+foreach ($m_rows as $r) {
+    if ($r['email'] == $_POST['email']) {
+        $output['code'] = 400;
+        $output['error'] = '信箱已註冊';
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+}
 
+// 準備上傳圖片
+// 確認圖片格式, 如果有上傳圖片, 重新命名
+$filename = NULL;
+if (!empty($_FILES) and !empty($_FILES['avatar']['type']) and $ext_map[$_FILES['avatar']['type']]) {
+    // 亂數命名
+    $filename = uniqid() . $ext_map[$_FILES['avatar']['type']];
+    $output['filename'] = $filename;
+    // 實際執行上傳檔案, 如果有上傳, 就繼續, 如果沒有有上傳, 就回報$output['error'] = '沒有上傳圖片';
+    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_folder . '/' . $filename)) {
+        $output['error'] = '沒有上傳圖片';
+    }
+}
 
+// 準備註冊
+$sql = "INSERT INTO `member`(`member_sid`, `account`, `password`, `email`, `nickname`, `avatar`) VALUES (NULL, ?, SHA(?), ?, ?, ?)";
+
+// 先做$pdo->prepare($sql), 然後execute()把原先$sql中有?的地方替換並在資料庫上執行SQL語法
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    $_POST['account'],
+    $_POST['password'],
+    $_POST['email'],
+    $_POST['nickname'],
+    $filename
+]);
+
+// 回傳成功訊息
+$output['success'] = true;
+$output['code'] = 201;
+unset($output['error']);
+unset($output['post']);
 echo json_encode($output, JSON_UNESCAPED_UNICODE);
 exit;
