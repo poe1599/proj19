@@ -99,8 +99,18 @@
                         <div class="card-body">
                             <h6 class="card-title"><?= $card['product_name'] ?></h6>
                             <p class="card-text"><?= $card['description'] ?></p>
-                            <p class="card-text">$ <?= $card['price'] ?></p>
-                            <button type="button" class="btn btn-primary">我要這個</button>
+                            <p class="card-text">$ <?= $card['unit_price'] ?></p>
+                            <form class="thisForm">
+                                <div class="d-flex justify-content-between">
+                                    <input type="text" name="product_sid" value="<?= $card['product_sid'] ?>" style="display: none;">
+                                    <select name="quantity" class="btn btn-outline-success">
+                                        <?php for ($i = 1; $i < 6; $i++) : ?>
+                                            <option value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor ?>
+                                    </select>
+                                    <a class="btn btn-primary" onclick="order_this(event)" role="button">我要這個</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach ?>
@@ -109,4 +119,31 @@
     </div>
 </div>
 <?php include './part/script.php' ?>
+<script>
+    // 發出訂單
+    function order_this(event, product_sid) {
+        const fd = new FormData(event.currentTarget.closest('.d-flex').closest('.thisForm'));
+        fetch('order_insert.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+                if (obj.success) {
+                    // 新增成功
+                    // info.classList.remove('alert-danger');
+                    // info.classList.add('alert-success');
+                    // info.innerHTML = '新增這筆通訊錄';
+                } else {
+                    // 新增失敗
+                    // info.classList.remove('alert-success');
+                    // info.classList.add('alert-danger');
+                    // info.innerHTML = '新增失敗';
+                }
+                // info.style.display = 'block';
+
+            });
+    }
+</script>
 <?php include './part/html_foot.php' ?>
