@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-16 14:16:58
--- 伺服器版本： 10.4.16-MariaDB
--- PHP 版本： 7.3.24
+-- 產生時間： 2020-12-19 19:19:56
+-- 伺服器版本： 10.4.17-MariaDB
+-- PHP 版本： 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,44 +50,46 @@ CREATE TABLE `member` (
   `member_sid` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `account` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `member`
 --
 
-INSERT INTO `member` (`member_sid`, `email`, `account`, `password`) VALUES
-(1, 'pp123@gmail.com', 'abc', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(2, 'ooo@gmail.com', 'ooo', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(3, 'tom60229@gmail.com', 'tom60229', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(4, 'eee@gmail.com', 'poe', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(5, 'haha@gmail.com', 'zxc', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(6, 'yaya@gmail.com', 'yaya', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(7, 'joker@gmail.com', 'joker', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(8, 'admin@gmail.com', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(9, 'yeh@gmail.com', 'yeh', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(10, 'Asahina@gmail.com', 'Asahina', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(11, 'Enoshima@gmail.com', 'Enoshima', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(12, 'Fujisaki@gmail.com', 'Fujisaki', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(13, 'Fukawa@gmail.com', 'Fukawa', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(14, 'Hagakure@gmail.com', 'Hagakure', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(15, 'Hinata@gmail.com', 'Hinata', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(16, 'Ikusaba@gmail.com', 'Ikusaba', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(17, 'Ishimaru@gmail.com', 'Ishimaru', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(18, 'Kirigiri@gmail.com', 'Kirigiri', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(19, 'Komaeda@gmail.com', 'Komaeda', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(20, 'Kuwata@gmail.com', 'Kuwata', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(21, 'Maizono@gmail.com', 'Maizono', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(23, 'Monomi@gmail.com', 'Monomi', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(24, 'Naegi@gmail.com', 'Naegi', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(25, 'Nanami@gmail.com', 'Nanami', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(26, 'Ogami@gmail.com', 'Ogami', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(27, 'Owada@gmail.com', 'Owada', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(28, 'Seresutia@gmail.com', 'Seresutia', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(29, 'Togami@gmail.com', 'Togami', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-(30, 'Yamada@gmail.com', 'Yamada', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+INSERT INTO `member` (`member_sid`, `email`, `account`, `password`, `nickname`, `avatar`) VALUES
+(1, 'pp123@gmail.com', 'abc', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(2, 'ooo@gmail.com', 'ooo', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(3, 'tom60229@gmail.com', 'tom60229', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(4, 'eee@gmail.com', 'poe', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(5, 'haha@gmail.com', 'zxc', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(6, 'yaya@gmail.com', 'yaya', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(7, 'joker@gmail.com', 'joker', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(8, 'admin@gmail.com', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(9, 'yeh@gmail.com', 'yeh', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, NULL),
+(10, 'Asahina@gmail.com', 'Asahina', '7c4a8d09ca3762af61e59520943dc26494f8941b', '朝日奈 葵', 'Asahina.png'),
+(11, 'Enoshima@gmail.com', 'Enoshima', '7c4a8d09ca3762af61e59520943dc26494f8941b', '江ノ島 盾子', 'Enoshima.png'),
+(12, 'Fujisaki@gmail.com', 'Fujisaki', '7c4a8d09ca3762af61e59520943dc26494f8941b', '不二咲 千尋', 'Fujisaki.png'),
+(13, 'Fukawa@gmail.com', 'Fukawa', '7c4a8d09ca3762af61e59520943dc26494f8941b', '腐川 冬子', 'Fukawa.png'),
+(14, 'Hagakure@gmail.com', 'Hagakure', '7c4a8d09ca3762af61e59520943dc26494f8941b', '葉隠 康比呂', 'Hagakure.png'),
+(15, 'Hinata@gmail.com', 'Hinata', '7c4a8d09ca3762af61e59520943dc26494f8941b', '日向 創', 'Hinata.png'),
+(16, 'Ikusaba@gmail.com', 'Ikusaba', '7c4a8d09ca3762af61e59520943dc26494f8941b', '戦刃 むくろ', 'Ikusaba.png'),
+(17, 'Ishimaru@gmail.com', 'Ishimaru', '7c4a8d09ca3762af61e59520943dc26494f8941b', '石丸 清多夏', 'Ishimaru.png'),
+(18, 'Kirigiri@gmail.com', 'Kirigiri', '7c4a8d09ca3762af61e59520943dc26494f8941b', '霧切 響子', 'Kirigiri.png'),
+(19, 'Komaeda@gmail.com', 'Komaeda', '7c4a8d09ca3762af61e59520943dc26494f8941b', '狛枝 凪斗', 'Komaeda.png'),
+(20, 'Kuwata@gmail.com', 'Kuwata', '7c4a8d09ca3762af61e59520943dc26494f8941b', '桑田 怜恩', 'Kuwata.png'),
+(21, 'Maizono@gmail.com', 'Maizono', '7c4a8d09ca3762af61e59520943dc26494f8941b', '舞園 さやか', 'Maizono.png'),
+(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白熊66', 'Monokuma.png'),
+(23, 'Monomi@gmail.com', 'Monomi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白美', 'Monomi.png'),
+(24, 'Naegi@gmail.com', 'Naegi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '苗木 誠', 'Naegi.png'),
+(25, 'Nanami@gmail.com', 'Nanami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '七海 千秋', 'Nanami.png'),
+(26, 'Ogami@gmail.com', 'Ogami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '大神 さくら', 'Ogami.png'),
+(27, 'Owada@gmail.com', 'Owada', '7c4a8d09ca3762af61e59520943dc26494f8941b', '大和田 紋土', 'Owada.png'),
+(28, 'Seresutia@gmail.com', 'Seresutia', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'セレスティア ルーデンベルク', 'Seresutia.png'),
+(29, 'Togami@gmail.com', 'Togami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '十神 白夜', 'Togami.png'),
+(30, 'Yamada@gmail.com', 'Yamada', '7c4a8d09ca3762af61e59520943dc26494f8941b', '山田 一二三', 'Yamada.png');
 
 -- --------------------------------------------------------
 
@@ -101,10 +103,12 @@ CREATE TABLE `order_list` (
   `product_sid` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT 1,
+  `unit_price` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT 1,
-  `check_state` tinyint(1) DEFAULT 0,
+  `next_time` tinyint(1) NOT NULL DEFAULT 0,
+  `check_state` tinyint(1) NOT NULL DEFAULT 0,
   `check_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -112,20 +116,16 @@ CREATE TABLE `order_list` (
 -- 傾印資料表的資料 `order_list`
 --
 
-INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `price`, `order_date`, `visible`, `check_state`, `check_date`) VALUES
-(1, 1, 20, '', 1, 1, '2020-12-09 18:43:49', 1, 0, '0000-00-00 00:00:00'),
-(2, 1, 20, '', 1, 1, '0000-00-00 00:00:00', 1, 0, '0000-00-00 00:00:00'),
-(3, 1, 1, '5566', 1, 1, '2020-12-01 18:51:21', 1, 0, '0000-00-00 00:00:00'),
-(4, 22, 3, '454545', 1, 123, '2020-12-01 19:38:33', 1, 0, '0000-00-00 00:00:00'),
-(5, 22, 31, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(6, 22, 15, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(7, 22, 3, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(8, 22, 6, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(9, 22, 16, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(10, 22, 12, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(11, 22, 8, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(12, 22, 25, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL),
-(13, 22, 19, '565656', 1, 120, '2020-12-01 19:40:02', 1, 0, NULL);
+INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `unit_price`, `price`, `order_date`, `visible`, `next_time`, `check_state`, `check_date`) VALUES
+(18, 22, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-20 02:07:26', 1, 0, 0, NULL),
+(19, 22, 1, 'Alpine Turkey Burgers', 2, 149, 298, '2020-12-20 02:09:53', 1, 1, 0, NULL),
+(20, 22, 2, 'Bellissimo Bruschetta Burgers\r\n', 4, 149, 596, '2020-12-20 02:12:25', 1, 0, 0, NULL),
+(21, 22, 5, 'Bacon Buckaroo Burgers\r\n', 3, 149, 447, '2020-12-20 02:12:33', 1, 0, 0, NULL),
+(22, 22, 20, 'Chicken Sausage Rigatoni\r\n', 4, 129, 516, '2020-12-20 02:13:55', 1, 0, 0, NULL),
+(23, 22, 18, 'Shrimp Spaghetti with a Kick\r\n', 3, 129, 387, '2020-12-20 02:13:57', 1, 0, 0, NULL),
+(24, 22, 19, 'Sun-Dried Tomato Spaghetti\r\n', 3, 129, 387, '2020-12-20 02:14:01', 1, 1, 0, NULL),
+(25, 22, 22, 'Silky Sicilian Penne\r\n', 4, 129, 516, '2020-12-20 02:14:15', 1, 0, 0, NULL),
+(26, 22, 21, 'Tomato Tortelloni Bake\r\n', 3, 129, 387, '2020-12-20 02:14:24', 1, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,7 @@ CREATE TABLE `product` (
   `product_name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `category_sid` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `unit_price` int(11) NOT NULL,
   `on_sale` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -147,7 +147,7 @@ CREATE TABLE `product` (
 -- 傾印資料表的資料 `product`
 --
 
-INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_sid`, `price`, `on_sale`, `created_at`) VALUES
+INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_sid`, `unit_price`, `on_sale`, `created_at`) VALUES
 (1, 'Alpine Turkey Burgers', 'with Mushrooms, Swiss Cheese, Dijonnaise & Potato Wedges', 1, 149, 1, '2020-12-01 11:05:29'),
 (2, 'Bellissimo Bruschetta Burgers\r\n', 'with Herby Potato Wedges & Parmesan-Roasted Asparagus\r\n', 1, 149, 1, '2020-12-01 11:07:17'),
 (3, 'Smothered Pepper Jack Burgers\r\n', 'with Spicy Ketchup & BBQ Potato Wedges\r\n', 1, 149, 1, '2020-12-01 11:07:17'),
@@ -231,7 +231,7 @@ ALTER TABLE `member`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
