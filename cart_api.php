@@ -8,13 +8,25 @@ $title = '購物車';
 // 讓navbar對應的選單變色
 $pageName = 'cart';
 
+// 本次購物清單
 $member = $_SESSION['member']['member_sid'];
-$sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1";
+$sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 0";
 $stmt = $pdo->query($sql);
 $row = $stmt->fetchall();
 
-// 購物車總花費計算
+// 本次購物車總花費計算
 $total_cost = 0;
 foreach ($row as $r) {
     $total_cost += $r['price'];
+}
+
+// 下次購物清單
+$n_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 1";
+$n_stmt = $pdo->query($n_sql);
+$n_row = $n_stmt->fetchall();
+
+// 下次購物車總花費計算
+$n_total_cost = 0;
+foreach ($n_row as $r) {
+    $n_total_cost += $r['price'];
 }
