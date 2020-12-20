@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-19 19:19:56
+-- 產生時間： 2020-12-20 14:04:26
 -- 伺服器版本： 10.4.17-MariaDB
 -- PHP 版本： 7.4.13
 
@@ -81,7 +81,7 @@ INSERT INTO `member` (`member_sid`, `email`, `account`, `password`, `nickname`, 
 (19, 'Komaeda@gmail.com', 'Komaeda', '7c4a8d09ca3762af61e59520943dc26494f8941b', '狛枝 凪斗', 'Komaeda.png'),
 (20, 'Kuwata@gmail.com', 'Kuwata', '7c4a8d09ca3762af61e59520943dc26494f8941b', '桑田 怜恩', 'Kuwata.png'),
 (21, 'Maizono@gmail.com', 'Maizono', '7c4a8d09ca3762af61e59520943dc26494f8941b', '舞園 さやか', 'Maizono.png'),
-(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白熊66', 'Monokuma.png'),
+(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白熊', 'Monokuma.png'),
 (23, 'Monomi@gmail.com', 'Monomi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白美', 'Monomi.png'),
 (24, 'Naegi@gmail.com', 'Naegi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '苗木 誠', 'Naegi.png'),
 (25, 'Nanami@gmail.com', 'Nanami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '七海 千秋', 'Nanami.png'),
@@ -118,14 +118,14 @@ CREATE TABLE `order_list` (
 
 INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `unit_price`, `price`, `order_date`, `visible`, `next_time`, `check_state`, `check_date`) VALUES
 (18, 22, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-20 02:07:26', 1, 0, 0, NULL),
-(19, 22, 1, 'Alpine Turkey Burgers', 2, 149, 298, '2020-12-20 02:09:53', 1, 1, 0, NULL),
-(20, 22, 2, 'Bellissimo Bruschetta Burgers\r\n', 4, 149, 596, '2020-12-20 02:12:25', 1, 0, 0, NULL),
+(19, 22, 1, 'Alpine Turkey Burgers', 2, 149, 298, '2020-12-20 02:09:53', 0, 0, 0, NULL),
+(20, 22, 2, 'Bellissimo Bruschetta Burgers\r\n', 4, 149, 596, '2020-12-20 02:12:25', 1, 1, 0, NULL),
 (21, 22, 5, 'Bacon Buckaroo Burgers\r\n', 3, 149, 447, '2020-12-20 02:12:33', 1, 0, 0, NULL),
-(22, 22, 20, 'Chicken Sausage Rigatoni\r\n', 4, 129, 516, '2020-12-20 02:13:55', 1, 0, 0, NULL),
-(23, 22, 18, 'Shrimp Spaghetti with a Kick\r\n', 3, 129, 387, '2020-12-20 02:13:57', 1, 0, 0, NULL),
-(24, 22, 19, 'Sun-Dried Tomato Spaghetti\r\n', 3, 129, 387, '2020-12-20 02:14:01', 1, 1, 0, NULL),
-(25, 22, 22, 'Silky Sicilian Penne\r\n', 4, 129, 516, '2020-12-20 02:14:15', 1, 0, 0, NULL),
-(26, 22, 21, 'Tomato Tortelloni Bake\r\n', 3, 129, 387, '2020-12-20 02:14:24', 1, 0, 0, NULL);
+(22, 22, 20, 'Chicken Sausage Rigatoni\r\n', 1, 129, 129, '2020-12-20 15:45:43', 1, 0, 0, NULL),
+(23, 22, 18, 'Shrimp Spaghetti with a Kick\r\n', 3, 129, 387, '2020-12-20 02:13:57', 1, 1, 0, NULL),
+(24, 22, 19, 'Sun-Dried Tomato Spaghetti\r\n', 3, 129, 387, '2020-12-20 02:14:01', 1, 0, 0, NULL),
+(25, 22, 22, 'Silky Sicilian Penne\r\n', 1, 129, 129, '2020-12-20 15:45:45', 1, 1, 0, NULL),
+(26, 22, 21, 'Tomato Tortelloni Bake\r\n', 1, 129, 129, '2020-12-20 15:45:47', 1, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
