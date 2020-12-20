@@ -18,7 +18,7 @@ if (!empty($category_sid)) {
 // 用$_GET['page']讀取query string, 沒有的話指定為1
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; // 判斷現在在第幾頁
 
-$perPage = 6; // 限制每頁資料有幾筆
+$perPage = 9; // 限制每頁資料有幾筆
 $t_sql = "SELECT COUNT(1) FROM `product` $where"; // 取得資料總共有多少筆
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; // $pdo->query($t_sql)先指定那些資料, fetch(PDO::FETCH_NUM)[0]再拿下來
 $totalPages = ceil($totalRows / $perPage); // 資料總共有幾頁

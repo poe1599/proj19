@@ -21,10 +21,12 @@
         border: 1px solid green;
     }
 </style>
+
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-2 d-flex flex-column">
             <a href="?" class="btn my-2 btn-outline-primary" name="">我的購物車</a>
+            <a href="?" class="btn my-2 btn-outline-primary" name="">歷史清單</a>
         </div>
         <div class="col-md-10">
             <div class="buyThisTime my-3 p-5">
@@ -188,8 +190,6 @@
     function to_this_time(order_sid) {
         location.href = 'order_modify.php?order_sid=' + order_sid + '&to_this_time=1';
     }
-
-
 
     // 訂單結帳(假結帳)
     function check_all() {

@@ -21,6 +21,10 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
+
+    .card-content {
+        height: 100px;
+    }
 </style>
 <div class="container">
     <div class="row mt-5">
@@ -95,10 +99,12 @@
             <div class="row">
                 <?php foreach ($card as $card) : ?>
                     <div class="card col-lg-6 col-xl-4 d-2">
-                        <img src="./img/product/<?= $card['product_sid'] ?>.jpg" class="card-img-top" alt="...">
+                        <img src="./img/product/<?= $card['product_sid'] ?>.jpg" class="card-img-top mt-3" alt="...">
                         <div class="card-body">
-                            <h6 class="card-title"><?= $card['product_name'] ?></h6>
-                            <p class="card-text"><?= $card['description'] ?></p>
+                            <div class="card-content">
+                                <h6 class="card-title"><?= $card['product_name'] ?></h6>
+                                <p class="card-text"><?= $card['description'] ?></p>
+                            </div>
                             <p class="card-text">$ <?= $card['unit_price'] ?></p>
                             <form class="thisForm">
                                 <div class="d-flex justify-content-between">
