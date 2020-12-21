@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
 
 $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴望';
 ?>
+<?php include './index_product_api.php' ?>
 <?php include './part/html_haed.php' ?>
 <?php include './part/navbar.php' ?>
 <style>
@@ -47,6 +48,33 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         </div>
         <!-- <div class="col-7 kv_img">
         </div> -->
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <?php foreach ($card as $card) : ?>
+            <div class="card col-lg-6 col-xl-4 d-2">
+                <img src="./img/product/<?= $card['product_sid'] ?>.jpg" class="card-img-top mt-3" alt="...">
+                <div class="card-body">
+                    <div class="card-content">
+                        <h6 class="card-title"><?= $card['product_name'] ?></h6>
+                        <p class="card-text"><?= $card['description'] ?></p>
+                    </div>
+                    <p class="card-text">$ <?= $card['unit_price'] ?></p>
+                    <form class="thisForm">
+                        <div class="d-flex justify-content-between">
+                            <input type="text" name="product_sid" value="<?= $card['product_sid'] ?>" style="display: none;">
+                            <select name="quantity" class="btn btn-outline-success">
+                                <?php for ($i = 1; $i < 6; $i++) : ?>
+                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                <?php endfor ?>
+                            </select>
+                            <a class="btn btn-primary" <?= !isset($_SESSION['member']) ? 'href="./login.php"' : 'onclick="order_this(event)"' ?> role="button">我要這個</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <?php endforeach ?>
     </div>
 </div>
 
