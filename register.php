@@ -32,6 +32,7 @@ $title = '註冊會員';
                     <div class="d-flex justify-content-center">
                         <img src="" alt="" id="preview" onclick="avatar.click()" style="width: 300px; min-height: 100px; background: #aaa;">
                     </div>
+                    <h6 class="text-center">請點此上傳頭像</h6>
                     <!-- novalidate會使表單的type限制與required均失效 -->
                     <!-- onsubmit="formCheck();return false;" 在表單送出的時候觸發 -->
                     <!-- return false 會阻止表單預設的GET -->
@@ -39,19 +40,19 @@ $title = '註冊會員';
                         <input type="file" id="avatar" name="avatar" accept="image/*" onchange="fileChange()" style="display: none">
 
                         <div class="form-group">
-                            <label for="account">Account</label>
+                            <label for="account">會員帳號</label>
                             <input type="text" class="form-control" id="account" name="account">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">密碼</label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="form-group">
-                            <label for="nickname">Nickname</label>
+                            <label for="nickname">暱稱</label>
                             <input type="text" class="form-control" id="nickname" name="nickname">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">電子信箱</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="d-flex justify-content-between">

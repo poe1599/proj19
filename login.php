@@ -56,17 +56,17 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
                     <h5 class="card-title">登入</h5>
                     <form method="POST">
                         <div class="form-group">
-                            <label for="account">Account</label>
+                            <label for="account">會員帳號</label>
                             <input type="text" class="form-control" id="account" name="account" value="<?php echo htmlentities($_POST["account"] ?? "") ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">密碼</label>
                             <input type="password" class="form-control" id="password" name="password" value="<?php echo htmlentities($_POST["password"] ?? "")  ?>">
                         </div>
                         <div class="d-flex justify-content-between">
-                            <a href="./register.php"><button type="button" class="btn btn-secondary">Register </button></a>
-                            <button type="submit" class="btn btn-primary">Log in</button>
+                            <a href="./register.php"><button type="button" class="btn btn-secondary">註冊</button></a>
+                            <button type="submit" class="btn btn-primary">登入</button>
                         </div>
                     </form>
                 </div>
