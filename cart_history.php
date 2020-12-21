@@ -24,6 +24,9 @@
     .cartHistory {
         border-radius: 20px;
         border: 1px solid green;
+        Text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 </style>
 

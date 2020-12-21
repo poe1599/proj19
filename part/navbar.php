@@ -36,7 +36,7 @@ if (isset($_SESSION['member']['member_sid'])) {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item <?= $pageName == 'product_list' ? 'active' : '' ?>">
+                <li class="nav-item px-2 <?= $pageName == 'product_list' ? 'active' : '' ?>">
                     <a class="nav-link" href="./product_list.php">今日菜單</a>
                 </li>
                 <!-- <li class="nav-item <?= $pageName == 'AAAAAA' ? 'active' : '' ?>">
