@@ -30,3 +30,14 @@ $n_total_cost = 0;
 foreach ($n_row as $r) {
     $n_total_cost += $r['price'];
 }
+
+// 歷史購物清單
+$h_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `check_state` = 1";
+$h_stmt = $pdo->query($h_sql);
+$h_row = $h_stmt->fetchall();
+
+// 歷史購物總花費計算
+$h_total_cost = 0;
+foreach ($h_row as $r) {
+    $h_total_cost += $r['price'];
+}

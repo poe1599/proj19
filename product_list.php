@@ -28,10 +28,10 @@
 </style>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-2 d-flex flex-column">
-            <a href="?<?php unset($_GET['category_sid']) ?>" class="btn my-2 btn-outline-primary" name="all_product">全部餐點</a>
+        <div class="col-md-2 d-flex flex-column category_list">
+            <a href="?<?php unset($_GET['category_sid']) ?>" class="btn my-2 btn-outline-success <?= !$category_sid ? 'active' : '' ?>" name="all_product">全部餐點</a>
             <?php foreach ($category as $category) : ?>
-                <a href="?category_sid=<?= $category['category_sid'] ?>" class="btn my-2 btn-outline-primary">
+                <a href="?category_sid=<?= $category['category_sid'] ?>" class="btn my-2 btn-outline-success <?= $category_sid == $category['category_sid'] ? 'active' : '' ?>">
                     <?= $category['category_name'] ?></a>
             <?php endforeach ?>
         </div>
@@ -61,7 +61,7 @@
                         <!-- 限制頁面太多時, 最多只能顯示前5與後5頁 -->
                         <!-- if限制不要出現負的與超過最大上限的頁面 -->
                         <?php
-                        for ($i = $page - 3; $i <= $page + 3; $i++) :
+                        for ($i = $page - 5; $i <= $page + 5; $i++) :
                             if ($i >= 1 && $i <= $totalPages) :
                         ?>
                                 <li class="page-item <?= $page == $i ? 'active' : '' ?>">

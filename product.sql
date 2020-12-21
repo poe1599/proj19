@@ -4,30 +4,33 @@ INSERT INTO `category` (`category_sid`, `category_name`) VALUES
 
 
 
-INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_sid`, `price`, `on_sale`, `created_at`) VALUES 
+INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_sid`, `unit_price`, `on_sale`, `created_at`) VALUES 
 (NULL, '\r\n', '\r\n', '1', '149', '1', '2020-12-01 11:07:17'),
+
+
+INSERT INTO `product`(`product_sid`, `product_name`, `description`, `category_sid`, `unit_price`, `on_sale`, `created_at`) VALUES 
+(NULL , 'Cheesy Black Bean Tacos\r\n', 'with Poblano & Smoky Red Pepper Crema\r\n', 3, 99, 1, NOW()),
+(NULL , 'BBQ Pulled Chicken Tacos\r\n', 'with Creamy Slaw & Red Onion\r\n', 3, 109, 1, NOW()),
+(NULL , 'Pork Carnitas Tacos\r\n', 'with Pickled Onion & Monterey Jack Cheese\r\n', 3, 99, 1, NOW()),
+(NULL , 'Pork & Poblano Tacos\r\n', 'with Kiwi Salsa & Lime Crema\r\n', 3, 99, 1, NOW()),
+(NULL , 'Banh-Mi-Style Chicken Tacos\r\n', 'with Pickled Cucumber & Sriracha Mayo\r\n', 3, 89, 1, NOW()),
+(NULL , 'Smashed Black Bean Tacos\r\n', 'with Creamy Slaw, Pickled Onion & Red Pepper Crema\r\n', 3, 99, 1, NOW()),
+(NULL , 'Pork & Caramelized Pineapple Tacos\r\n', 'with Pickled Veggies & Lime Crema\r\n', 3, 109, 1, NOW()),
+(NULL , 'Southwestern Shrimp Tacos\r\n', 'with Pico de Gallo & Lime Crema\r\n', 3, 99, 1, NOW()),
+(NULL , 'Cheesy Buffalo Chicken Tacos\r\n', 'with Creamy Ranch Slaw\r\n', 3, 119, 1, NOW()),
+(NULL , 'Santa Fe Pork Tacos\r\n', 'with Monterey Jack & Cilantro Lime Slaw\r\n', 3, 99, 1, NOW()),
+(NULL , 'Speedy Start Chicken Tacos\r\n', 'sprinkled with Mexican Cheese\r\n', 3, 99, 1, NOW()),
+(NULL , 'Buffalo Chicken Tacos\r\n', 'with Melty Cheddar & a Creamy Ranch Celery Slaw\r\n', 3, 109, 1, NOW()),
+(NULL , 'Cheesy Breakfast Tacos\r\n', 'with Charred Veggies, Pico de Gallo & Smoky Crema (2 servings)\r\n', 3, 99, 1, NOW()),
+(NULL , 'Chicken Stir-Fry Tacos\r\n', 'with Tangy Cabbage Slaw & Sriracha Mayo\r\n', 3, 89, 1, NOW()),
+(NULL , 'Mojo Pork Tacos\r\n', 'with Creamy Cilantro Slaw\r\n', 3, 99, 1, NOW()),
+(NULL , 'Mexican Pork & Street Corn Tacos\r\n', 'with Chili Lime Crema\r\n', 3, 99, 1, NOW())
 
 
 
 
 INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_sid`, `price`, `on_sale`, `created_at`) VALUES 
 (NULL, 'Creamy Dreamy Mushroom Cavatappi\r\n', 'with Scallions & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Shrimp Spaghetti with a Kick\r\n', 'with Garlic Herb Butter & Zucchini\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Sun-Dried Tomato Spaghetti\r\n', 'with Fresh Herbs, Almonds & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Chicken Sausage Rigatoni\r\n', 'in a Creamy Pink Sauce with Bell Pepper & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Tomato Tortelloni Bake\r\n', 'with Crispy Parmesan Breadcrumbs\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Silky Sicilian Penne\r\n', 'tossed with Zucchini, Mushrooms & Tomatoes\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Penne Pepperonata\r\n', 'Fully cooked. Heats in 3 mins! | 1 Serving\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Lemon Tortelloni Palermo\r\n', 'with Roasted Bell Pepper & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Blush Bay Scallop Penne\r\n', 'with Parmesan & Lemon\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Creamy Lemon Spinach Ricotta Ravioli\r\n', 'with Roasted Bell Pepper & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Buon Appetito Bacon Chicken\r\n', 'over Creamy Sun-Dried Tomato Spaghetti\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Jalapeño Business Bacon Mac & Cheese\r\n', 'topped with Crispy Spiced Panko\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Plant-Based Protein Rigatoni Alla Rossa\r\n', 'Protein that tastes like meat (without the meat)\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Pork Sausage Rigatoni in a Creamy Sauce\r\n', 'with Bell Pepper & Lemon\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'BBQ Baby Back Ribs & Cheesy Buffalo Mac\r\n', 'with Buttermilk Ranch Slaw\r\n', '2', '129', '1', '2020-12-01 11:07:17'),
-(NULL, 'Chicken Sausage Cavatappi Bolognese\r\n', 'with Zucchini & Parmesan\r\n', '2', '129', '1', '2020-12-01 11:07:17')
-
 
 INSERT INTO `member` (`member_sid`, `email`, `account`, `password`) VALUES 
 (NULL, 'ooo@gmail.com', 'ooo', SHA1('123456')),

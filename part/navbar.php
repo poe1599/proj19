@@ -1,6 +1,6 @@
 <style>
     .navbar .nav-item.active {
-        background-color: #86cbee;
+        background-color: #C4ED92;
         border-radius: 10px;
     }
 </style>
@@ -15,9 +15,9 @@
                 <li class="nav-item <?= $pageName == 'product_list' ? 'active' : '' ?>">
                     <a class="nav-link" href="./product_list.php">今日菜單</a>
                 </li>
-                <li class="nav-item <?= $pageName == 'AAAAAA' ? 'active' : '' ?>">
+                <!-- <li class="nav-item <?= $pageName == 'AAAAAA' ? 'active' : '' ?>">
                     <a class="nav-link" href="#">Link</a>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav">
                 <?php if (isset($_SESSION['member'])) : ?>

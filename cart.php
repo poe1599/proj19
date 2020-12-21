@@ -25,63 +25,71 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-2 d-flex flex-column">
-            <a href="?" class="btn my-2 btn-outline-primary" name="">我的購物車</a>
-            <a href="?" class="btn my-2 btn-outline-primary" name="">歷史清單</a>
+            <a href="./cart.php" class="btn my-2 btn-outline-success active" name="">我的購物車</a>
+            <a href="./cart_history.php" class="btn my-2 btn-outline-success" name="">歷史清單</a>
         </div>
         <div class="col-md-10">
-            <div class="buyThisTime my-3 p-5">
-                <div>
-                    <h4>本次購物清單</h4>
+            <?php if (!$row) : ?>
+                <div class="buyThisTime my-3 p-5">
+                    <div>
+                        <h4>你還沒有點餐喔, 快去找點好吃的吧!</h4>
+                    </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"><a href="javascript: del_all()">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a></i></th>
-                            <th scope="col">訂單編號</th>
-                            <th scope="col">商品編號</th>
-                            <th scope="col">商品名</th>
-                            <th scope="col">數量</th>
-                            <th scope="col">價格</th>
-                            <th scope="col">增改日期</th>
-                            <th scope="col"><a href="javascript: all_to_next_time()">下次<i class="fas fa-arrow-circle-down"></i></a></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($row as $row) : ?>
-                            <tr id="<?= $row['order_sid'] ?>">
-                                <!-- 移除購買商品按鈕 -->
-                                <td class="remove-icon">
-                                    <a href="javascript: del_it(<?= $row['order_sid'] ?>)">
+            <?php else : ?>
+                <div class="buyThisTime my-3 p-5">
+                    <div>
+                        <h4>本次購物清單</h4>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"><a href="javascript: del_all()">
                                         <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                                <td><?= $row['order_sid'] ?></td>
-                                <td><?= $row['product_sid'] ?></td>
-                                <td><?= $row['product_name'] ?></td>
-                                <td>
-                                    <select name="quantity" onchange="quantityChange(<?= $row['order_sid'] ?>)">
-                                        <!--  -->
-                                        <?php for ($i = 1; $i < 6; $i++) : ?>
-                                            <option value="<?= $i ?>" <?= $i == $row['quantity'] ? 'selected' : '' ?>><?= $i ?></option>
-                                        <?php endfor ?>
-                                    </select>
-                                </td>
-                                <td><?= $row['price'] ?></td>
-                                <td><?= $row['order_date'] ?></td>
-                                <td>
-                                    <a href="javascript: to_next_time(<?= $row['order_sid'] ?>)"><i class="fas fa-arrow-circle-down"></i></a>
-                                </td>
+                                    </a></i></th>
+                                <th scope="col">訂單編號</th>
+                                <th scope="col">商品編號</th>
+                                <th scope="col">商品名</th>
+                                <th scope="col">數量</th>
+                                <th scope="col">價格</th>
+                                <th scope="col">增改日期</th>
+                                <th scope="col"><a href="javascript: all_to_next_time()"><i class="fas fa-arrow-circle-down"></i>下次</a></th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-                <div class="row d-flex justify-content-between">
-                    <h4>$NTD: <?= $total_cost ?></h4>
-                    <button type="button" class="btn btn-primary" onclick="check_all()">結帳</button>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($row as $row) : ?>
+                                <tr id="<?= $row['order_sid'] ?>">
+                                    <!-- 移除購買商品按鈕 -->
+                                    <td class="remove-icon">
+                                        <a href="javascript: del_it(<?= $row['order_sid'] ?>)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                    <td><?= $row['order_sid'] ?></td>
+                                    <td><?= $row['product_sid'] ?></td>
+                                    <td><?= $row['product_name'] ?></td>
+                                    <td>
+                                        <select name="quantity" onchange="quantityChange(<?= $row['order_sid'] ?>)">
+                                            <!--  -->
+                                            <?php for ($i = 1; $i < 6; $i++) : ?>
+                                                <option value="<?= $i ?>" <?= $i == $row['quantity'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            <?php endfor ?>
+                                        </select>
+                                    </td>
+                                    <td><?= $row['price'] ?></td>
+                                    <td><?= $row['order_date'] ?></td>
+                                    <td>
+                                        <a href="javascript: to_next_time(<?= $row['order_sid'] ?>)"><i class="fas fa-arrow-circle-down"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <div class="row d-flex justify-content-between">
+                        <h4>$NTD: <?= $total_cost ?></h4>
+                        <button type="button" class="btn btn-primary" onclick="check_all()">結帳</button>
+                    </div>
                 </div>
-            </div>
+            <?php endif ?>
             <?php if ($n_row) : ?>
                 <div class="buyNextTime my-3 p-5">
                     <div>
@@ -99,7 +107,7 @@
                                 <th scope="col">數量</th>
                                 <th scope="col">價格</th>
                                 <th scope="col">增改日期</th>
-                                <th scope="col"><a href="javascript: all_to_this_time()">這次<i class="fas fa-arrow-circle-up"></i></a></th>
+                                <th scope="col"><a href="javascript: all_to_this_time()"><i class="fas fa-arrow-circle-up"></i>這次</a></th>
                             </tr>
                         </thead>
                         <tbody>
