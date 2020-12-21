@@ -39,8 +39,7 @@ if (isset($_POST['product_sid']) && isset($_POST['quantity'])) {
     ]);
 
     // 算購物車數量
-    $member = $_SESSION['member']['member_sid'];
-    $num_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 0";
+    $num_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member_sid AND `visible` = 1 AND `next_time` = 0";
     $num_stmt = $pdo->query($num_sql);
     $num_row = $num_stmt->fetchall();
     $output['order_num'] = 0;

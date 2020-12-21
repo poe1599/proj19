@@ -36,19 +36,20 @@ $title = '編輯會員資料';
                         <input type="file" id="avatar" name="avatar" accept="image/*" onchange="fileChange()" style="display: none">
 
                         <div class="form-group">
-                            <label for="account">Account</label>
+                            <label for="account">會員帳號</label>
                             <input type="text" class="form-control" value="<?= $_SESSION['member']['account'] ?>" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="nickname">Nickname</label>
+                            <label for="nickname">暱稱</label>
                             <input type="text" class="form-control" id="nickname" name="nickname" value="<?= $_SESSION['member']['nickname'] ?>">
                         </div>
                         <div class="form-group">
-                            <label for="new_password">New password</label>
+                            <label for="new_password">新密碼</label>
                             <input type="text" class="form-control" id="new_password" name="new_password" required>
+                            <small>(如不更改請留空即可)</small>
                         </div>
                         <div class="form-group">
-                            <label for="password">Old password</label>
+                            <label for="password">現在使用的密碼</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="d-flex justify-content-between">

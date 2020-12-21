@@ -1,13 +1,15 @@
 <?php
-require './db_connect.php';
 // 算購物車數量
-$member = $_SESSION['member']['member_sid'];
-$num_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 0";
-$num_stmt = $pdo->query($num_sql);
-$num_row = $num_stmt->fetchall();
 $order_num = 0;
-foreach ($num_row as $r) {
-    $order_num++;
+if (isset($_SESSION['member']['member_sid'])) {
+    require './db_connect.php';
+    $member_sid = $_SESSION['member']['member_sid'];
+    $num_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member_sid AND `visible` = 1 AND `next_time` = 0";
+    $num_stmt = $pdo->query($num_sql);
+    $num_row = $num_stmt->fetchall();
+    foreach ($num_row as $r) {
+        $order_num++;
+    }
 }
 ?>
 

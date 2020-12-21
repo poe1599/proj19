@@ -114,7 +114,7 @@
                                             <option value="<?= $i ?>"><?= $i ?></option>
                                         <?php endfor ?>
                                     </select>
-                                    <a class="btn btn-primary" onclick="order_this(event)" role="button">我要這個</a>
+                                    <a class="btn btn-primary" <?= !isset($_SESSION['member']) ? 'href="./login.php"' : 'onclick="order_this(event)"' ?> role="button">我要這個</a>
                                 </div>
                             </form>
                         </div>
