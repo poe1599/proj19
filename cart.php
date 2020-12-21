@@ -155,54 +155,54 @@
     // 取消本次全部訂單
     function del_all() {
         if (confirm(`是否要取消本次全部訂單?`)) {
-            location.href = 'order_modify.php?del_all=1';
+            location.href = 'order_modify.api.php?del_all=1';
         }
     }
 
     // 取消下次全部訂單
     function del_all_next_time() {
         if (confirm(`是否要取消下次全部訂單?`)) {
-            location.href = 'order_modify.php?del_all_next_time=1';
+            location.href = 'order_modify.api.php?del_all_next_time=1';
         }
     }
 
     // 取消單筆訂單
     function del_it(order_sid) {
         if (confirm(`是否要取消 ${order_sid} 號訂單?`)) {
-            location.href = 'order_modify.php?order_sid=' + order_sid + '&cancel=1';
+            location.href = 'order_modify.api.php?order_sid=' + order_sid + '&cancel=1';
         }
     }
 
     // 修改訂單數量
     function quantityChange(order_sid) {
         const quantity = event.currentTarget.value;
-        location.href = 'order_modify.php?order_sid=' + order_sid + '&quantity=' + quantity;
+        location.href = 'order_modify.api.php?order_sid=' + order_sid + '&quantity=' + quantity;
     }
 
     // 全部下次再買
     function all_to_next_time() {
-        location.href = 'order_modify.php?all_to_next_time=1';
+        location.href = 'order_modify.api.php?all_to_next_time=1';
     }
 
     // 單筆下次再買
     function to_next_time(order_sid) {
-        location.href = 'order_modify.php?order_sid=' + order_sid + '&to_next_time=1';
+        location.href = 'order_modify.api.php?order_sid=' + order_sid + '&to_next_time=1';
     }
 
     // 全部這次要買
     function all_to_this_time() {
-        location.href = 'order_modify.php?all_to_this_time=1';
+        location.href = 'order_modify.api.php?all_to_this_time=1';
     }
 
     // 單筆下次再買
     function to_this_time(order_sid) {
-        location.href = 'order_modify.php?order_sid=' + order_sid + '&to_this_time=1';
+        location.href = 'order_modify.api.php?order_sid=' + order_sid + '&to_this_time=1';
     }
 
     // 訂單結帳(假結帳)
     function check_all() {
         if (confirm(`是否要完成結帳?`)) {
-            location.href = 'order_check.php?check_all=1';
+            location.href = 'order_check.api.php?check_all=1';
         }
     }
 </script>

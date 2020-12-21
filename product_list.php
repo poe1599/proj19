@@ -129,7 +129,7 @@
     // 發出訂單
     function order_this(event, product_sid) {
         const fd = new FormData(event.currentTarget.closest('.d-flex').closest('.thisForm'));
-        fetch('order_insert.php', {
+        fetch('order_insert.api.php', {
                 method: 'POST',
                 body: fd
             })
