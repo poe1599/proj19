@@ -2,6 +2,10 @@
 <?php include './part/html_haed.php' ?>
 <?php include './part/navbar.php' ?>
 <style>
+    .pageLink ul {
+        margin: 10px 0;
+    }
+
     .card-title {
         overflow: hidden;
         /* white-space: nowrap; */
@@ -36,9 +40,9 @@
             <?php endforeach ?>
         </div>
         <div class="col-md-10">
-            <div class="d-flex">
+            <div class="pageLink">
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
+                    <ul class="pagination d-flex justify-content-center">
                         <!-- 移至頁首 -->
                         <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
                             <a class="page-link" href="?<?php
@@ -120,6 +124,66 @@
                         </div>
                     </div>
                 <?php endforeach ?>
+            </div>
+            <div class="pageLink">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination d-flex justify-content-center">
+                        <!-- 移至頁首 -->
+                        <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?<?php
+                                                        $params['page'] = 1;
+                                                        echo http_build_query($params);
+                                                        ?>">
+                                <i class="fas fa-arrow-alt-circle-left"></i>
+                            </a>
+                        </li>
+                        <!-- 下一頁 -->
+                        <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?<?php
+                                                        $params['page'] = $page - 1;
+                                                        echo http_build_query($params);
+                                                        ?>">
+                                <i class="far fa-arrow-alt-circle-left"></i>
+                            </a>
+                        </li>
+                        <!-- 改變頁數 -->
+                        <!-- 限制頁面太多時, 最多只能顯示前5與後5頁 -->
+                        <!-- if限制不要出現負的與超過最大上限的頁面 -->
+                        <?php
+                        for ($i = $page - 5; $i <= $page + 5; $i++) :
+                            if ($i >= 1 && $i <= $totalPages) :
+                        ?>
+                                <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                                    <a class="page-link" href="?<?php
+                                                                $params['page'] = $i;
+                                                                echo http_build_query($params);
+                                                                ?>">
+                                        <?= $i ?>
+                                    </a>
+                                </li>
+                        <?php
+                            endif;
+                        endfor ?>
+                        <!-- 上一頁 -->
+                        <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?<?php
+                                                        $params['page'] = $page + 1;
+                                                        echo http_build_query($params);
+                                                        ?>">
+                                <i class="far fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </li>
+                        <!-- 移至頁尾 -->
+                        <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+                            <a class="page-link" href="?<?php
+                                                        $params['page'] = $totalPages;
+                                                        echo http_build_query($params);
+                                                        ?>">
+                                <i class="fas fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

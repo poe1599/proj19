@@ -24,7 +24,7 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
 ?>
 <?php include './part/html_haed.php' ?>
 <?php include './part/navbar.php' ?>
-<div class="container">
+<div class="container mt-3">
     <div class="row d-flex justify-content-center">
 
         <div class="col-lg-6 card ">

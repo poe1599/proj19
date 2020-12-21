@@ -1,6 +1,6 @@
-<div class="goTop">
-    <a href="#">Top</a>
-</div>
+<a href="#">
+    <div class="goTop"><i class="fas fa-chevron-up"></i></div>
+</a>
 </body>
 
 </html>

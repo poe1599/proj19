@@ -14,10 +14,10 @@ if (isset($_SESSION['member']['member_sid'])) {
 ?>
 
 <style>
-    /* .navbar .nav-item.active {
+    .navbar .nav-item.active {
         background-color: #C4ED92;
         border-radius: 10px;
-    } */
+    }
 
     .order_num {
         width: 24px;
