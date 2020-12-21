@@ -128,6 +128,7 @@
 <script>
     // 發出訂單
     function order_this(event, product_sid) {
+        const orderNum = document.querySelector('#order_num');
         const fd = new FormData(event.currentTarget.closest('.d-flex').closest('.thisForm'));
         fetch('order_insert.api.php', {
                 method: 'POST',
@@ -138,17 +139,13 @@
                 console.log(obj);
                 if (obj.success) {
                     // 新增成功
-                    // info.classList.remove('alert-danger');
-                    // info.classList.add('alert-success');
-                    // info.innerHTML = '新增這筆通訊錄';
+                    // 購物車數量修改
+                    orderNum.innerHTML = obj.order_num;
+                    orderNum.classList.add('d-inline-block');
+                    orderNum.classList.remove('d-none');
                 } else {
                     // 新增失敗
-                    // info.classList.remove('alert-success');
-                    // info.classList.add('alert-danger');
-                    // info.innerHTML = '新增失敗';
                 }
-                // info.style.display = 'block';
-
             });
     }
 </script>
