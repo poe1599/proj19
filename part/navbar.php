@@ -14,18 +14,19 @@ if (isset($_SESSION['member']['member_sid'])) {
 ?>
 
 <style>
-    .navbar .nav-item.active {
+    /* .navbar .nav-item.active {
         background-color: #C4ED92;
         border-radius: 10px;
-    }
+    } */
 
     .order_num {
-        width: 25px;
+        width: 24px;
         display: inline-block;
         background: orange;
         color: papayawhip;
         text-align: center;
         border-radius: 50%;
+        line-height: 24px;
     }
 </style>
 <div id="topIsHere"></div>
@@ -51,17 +52,17 @@ if (isset($_SESSION['member']['member_sid'])) {
                         </a>
                     </li>
                     <li class="nav-item px-2 <?= $pageName == 'member_edit' ? 'active' : '' ?>">
-                        <a class="nav-link" href="./member_edit.php"><?= $_SESSION['member']['nickname'] ?></a>
+                        <a class="nav-link" href="./member_edit.php"><i class="fas fa-user mr-2"></i><?= $_SESSION['member']['nickname'] ?></a>
                     </li>
                     <li class="nav-item px-2 <?= $pageName == 'logout' ? 'active' : '' ?>">
                         <a class="nav-link" href="./logout.php">登出</a>
                     </li>
                 <?php else : ?>
                     <li class="nav-item px-2 <?= $pageName == 'login' ? 'active' : '' ?>">
-                        <a class="nav-link" href="./login.php">登入</a>
+                        <a class="nav-link" href="./login.php"><i class="fas fa-user mr-2"></i>登入</a>
                     </li>
                     <li class="nav-item px-2 <?= $pageName == 'register' ? 'active' : '' ?>">
-                        <a class="nav-link" href="./register.php">註冊</a>
+                        <a class="nav-link" href="./register.php"><i class="fas fa-user-plus mr-2"></i>註冊</a>
                     </li>
                 <?php endif ?>
 
