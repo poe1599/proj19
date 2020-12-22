@@ -65,6 +65,7 @@ $title = '註冊會員';
         </div>
     </div>
 </div>
+<?php include './part/footer.php' ?>
 <?php include './part/script.php' ?>
 
 <script>

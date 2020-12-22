@@ -76,5 +76,6 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
 
     </div>
 </div>
+<?php include './part/footer.php' ?>
 <?php include './part/script.php' ?>
 <?php include './part/html_foot.php' ?>

@@ -97,8 +97,8 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         <?php endforeach ?>
     </div>
 </div>
-<div class="container my-5"></div>
 
+<?php include './part/footer.php' ?>
 <?php include './part/script.php' ?>
 <script>
     // 發出訂單

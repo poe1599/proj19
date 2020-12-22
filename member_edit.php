@@ -62,6 +62,7 @@ $title = '編輯會員資料';
         </div>
     </div>
 </div>
+<?php include './part/footer.php' ?>
 <?php include './part/script.php' ?>
 
 <script>

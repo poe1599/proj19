@@ -14,6 +14,11 @@ if (isset($_SESSION['member']['member_sid'])) {
 ?>
 
 <style>
+    /* nav .container {
+        background-color: #ae3;
+        border-radius: 10px;
+    } */
+
     .navbar .nav-item.active {
         background-color: #C4ED92;
         border-radius: 10px;
