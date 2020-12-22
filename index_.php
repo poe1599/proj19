@@ -100,4 +100,33 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
 <div class="container my-5"></div>
 
 <?php include './part/script.php' ?>
+<script>
+    // 發出訂單
+    function order_this(event, product_sid) {
+        const orderNum = document.querySelector('#order_num');
+        const sideOrderNum = document.querySelector('#side_order_num');
+        const fd = new FormData(event.currentTarget.closest('.d-flex').closest('.thisForm'));
+        fetch('order_insert.api.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+                if (obj.success) {
+                    // 新增成功
+                    // 購物車數量修改
+                    orderNum.innerHTML = obj.order_num;
+                    orderNum.classList.add('d-inline-block');
+                    orderNum.classList.remove('d-none');
+
+                    sideOrderNum.innerHTML = '<i class="fas fa-shopping-cart mr-2"></i>' + obj.order_num;
+                    sideOrderNum.classList.add('d-inline-block');
+                    sideOrderNum.classList.remove('d-none');
+                } else {
+                    // 新增失敗
+                }
+            });
+    }
+</script>
 <?php include './part/html_foot.php' ?>
