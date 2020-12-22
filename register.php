@@ -42,22 +42,32 @@ $title = '註冊會員';
                         <div class="form-group">
                             <label for="account">會員帳號</label>
                             <input type="text" class="form-control" id="account" name="account">
+                            <small class="form-text error_msg" style="display: none;">請填入帳號</small>
                         </div>
                         <div class="form-group">
                             <label for="password">密碼</label>
                             <input type="password" class="form-control" id="password" name="password">
+                            <small class="form-text error_msg" style="display: none;">請填入密碼</small>
                         </div>
                         <div class="form-group">
                             <label for="nickname">暱稱</label>
                             <input type="text" class="form-control" id="nickname" name="nickname">
+                            <small class="form-text error_msg" style="display: none;">請填入暱稱</small>
                         </div>
                         <div class="form-group">
                             <label for="email">電子信箱</label>
                             <input type="email" class="form-control" id="email" name="email">
+                            <small class="form-text error_msg" style="display: none;">請填入電子信箱</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">行動電話</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile">
+                            <small class="form-text error_msg" style="display: none;">請填入行動電話</small>
                         </div>
                         <div class="form-group">
                             <label for="address">住址</label>
                             <input type="text" class="form-control" id="address" name="address">
+                            <small class="form-text error_msg" style="display: none;">請填入住址</small>
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="reset" class="btn btn-outline-secondary">清空</button>
@@ -78,6 +88,14 @@ $title = '註冊會員';
     const preview = document.querySelector('#preview');
     const reader = new FileReader();
 
+    const info = document.querySelector('#info');
+    const account = document.querySelector('#account');
+    const password = document.querySelector('#password');
+    const nickname = document.querySelector('#nickname');
+    const email = document.querySelector('#email');
+    const mobile = document.querySelector('#mobile');
+    const address = document.querySelector('#address');
+
     reader.addEventListener('load', function(event) {
         preview.src = reader.result;
         preview.style.height = 'auto';
@@ -91,10 +109,7 @@ $title = '註冊會員';
         console.log(avatar.files[0]);
     }
 
-
     // 檢查表單送出的資料, 確認格式沒問題才會POST出去
-    const info = document.querySelector('#info');
-
     function formRegister() {
         // 預設提示字隱藏, 預設通過檢查
         info.style.display = 'none';
@@ -107,10 +122,64 @@ $title = '註冊會員';
             info.style.display = 'block';
         }
 
+        // 沒有填入的小提示
+        function smallErrorMsg(div) {
+            div.style.borderColor = 'red';
+            let small = div.closest('.form-group').querySelector('small');
+            small.style.display = 'block';
+        }
+        // 清除小提示
+        function smallErrorMsgDel(div) {
+            div.style.borderColor = '#ced4da';
+            let small = div.closest('.form-group').querySelector('small');
+            small.innerText = '';
+            small.style.display = 'none';
+        }
+
+        // 檢查帳號
+        if (!account.value) {
+            smallErrorMsg(account)
+        } else {
+            smallErrorMsgDel(account)
+        }
+
+        // 檢查密碼
         if (!password.value) {
-            ngMsg();
+            smallErrorMsg(password)
+        } else {
+            smallErrorMsgDel(password)
+        }
+
+        // 檢查暱稱
+        if (!nickname.value) {
+            smallErrorMsg(nickname)
+        } else {
+            smallErrorMsgDel(nickname)
+        }
+
+        // 檢查信箱
+        if (!email.value) {
+            smallErrorMsg(email)
+        } else {
+            smallErrorMsgDel(email)
+        }
+
+        // 檢查手機
+        if (!mobile.value) {
+            smallErrorMsg(mobile)
+        } else {
+            smallErrorMsgDel(mobile)
+        }
+
+        // 檢查住址
+        if (!address.value) {
+            smallErrorMsg(address)
+        } else {
+            smallErrorMsgDel(address)
+        }
+
+        if (!account.value || !password.value || !nickname.value || !email.value || !mobile.value || !address.value) {
             isPass = false;
-            info.innerHTML = '請填入密碼';
         }
 
         // 如果檢查沒有問題, 就POST表單的資料

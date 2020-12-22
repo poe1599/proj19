@@ -31,6 +31,14 @@ $fields[] = "`nickname`=" . $pdo->quote($_POST['nickname']);
 
 $fields[] = "`address`=" . $pdo->quote($_POST['address']);
 
+// 如果密碼錯誤
+if ($_POST['password'] != $_SESSION['member']['password']) {
+    $output['error'] = '密碼錯誤';
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+
 // 有沒有要改密碼
 if (!empty($_POST['new_password'])) {
     // $pdo->quote($_POST['new_password'])跳脫表單送來的值, 用sprintf()取代%s, 再送到$fields[]這個陣列中

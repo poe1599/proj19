@@ -40,8 +40,16 @@ $title = '編輯會員資料';
                             <input type="text" class="form-control" value="<?= $_SESSION['member']['account'] ?>" disabled>
                         </div>
                         <div class="form-group">
+                            <label for="email">電子信箱</label>
+                            <input type="email" class="form-control" value="<?= $_SESSION['member']['email'] ?>" disabled>
+                        </div>
+                        <div class="form-group">
                             <label for="nickname">暱稱</label>
                             <input type="text" class="form-control" id="nickname" name="nickname" value="<?= $_SESSION['member']['nickname'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">暱稱</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" value="<?= $_SESSION['member']['mobile'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="address">地址</label>
@@ -55,6 +63,7 @@ $title = '編輯會員資料';
                         <div class="form-group">
                             <label for="password">現在使用的密碼</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                            <small class="form-text error_msg" style="display: none;"></small>
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">提交</button>
@@ -74,6 +83,7 @@ $title = '編輯會員資料';
     const avatar = document.querySelector('#avatar');
     const preview = document.querySelector('#preview');
     const reader = new FileReader();
+    const password = document.querySelector('#password');
 
     reader.addEventListener('load', function(event) {
         preview.src = reader.result;
@@ -92,12 +102,32 @@ $title = '編輯會員資料';
     const info = document.querySelector('#info');
 
     function formCheck() {
+        // 先刷掉前一次的錯誤訊息
+        password.style.borderColor = '#ced4da';
+        password.closest('.form-group').querySelector('small').style.display = 'none';
+
         // 預設提示字隱藏, 預設通過檢查
         info.style.display = 'none';
         let isPass = true;
 
+        // 失敗提示框的CSS
+        function ngMsg() {
+            info.classList.remove('alert-success');
+            info.classList.add('alert-danger');
+            info.style.display = 'block';
+        }
+
         if (!password.value) {
+            // 頂層錯誤提示
+            ngMsg();
             isPass = false;
+            info.innerHTML = '請填入密碼';
+
+            // 欄位錯誤提示
+            password.style.borderColor = 'red';
+            let small = password.closest('.form-group').querySelector('small');
+            small.innerText = '請填入密碼';
+            small.style.display = 'block';
         }
 
         // 如果檢查沒有問題, 就POST表單的資料
@@ -121,7 +151,7 @@ $title = '編輯會員資料';
                         // 失敗
                         info.classList.remove('alert-success');
                         info.classList.add('alert-danger');
-                        info.innerHTML = '更新失敗';
+                        info.innerHTML = '更新失敗 ' + obj.error;
                     }
                     info.style.display = 'block';
                 });

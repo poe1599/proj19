@@ -65,6 +65,18 @@ foreach ($m_rows as $r) {
         exit;
     }
 }
+// 手機驗證, 抓SQL內的資料出來比對是否曾註冊
+$m_stmt = $pdo->query($m_sql);
+$m_rows = $m_stmt->fetchAll();
+foreach ($m_rows as $r) {
+    if ($r['mobile'] == $_POST['mobile']) {
+        $output['code'] = 400;
+        $output['error'] = '手機已註冊';
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+}
+
 
 // 準備上傳圖片
 // 確認圖片格式, 如果有上傳圖片, 重新命名
@@ -80,7 +92,7 @@ if (!empty($_FILES) and !empty($_FILES['avatar']['type']) and $ext_map[$_FILES['
 }
 
 // 準備註冊
-$sql = "INSERT INTO `member`(`member_sid`, `account`, `password`, `email`, `nickname`, `avatar`, `address`) VALUES (NULL, ?, SHA(?), ?, ?, ?, ?)";
+$sql = "INSERT INTO `member`(`member_sid`, `account`, `password`, `email`, `nickname`, `avatar`, `mobile`, `address`) VALUES (NULL, ?, SHA(?), ?, ?, ?, ?, ?)";
 
 // 先做$pdo->prepare($sql), 然後execute()把原先$sql中有?的地方替換並在資料庫上執行SQL語法
 $stmt = $pdo->prepare($sql);
@@ -90,6 +102,7 @@ $stmt->execute([
     $_POST['email'],
     $_POST['nickname'],
     $filename,
+    $_POST['mobile'],
     $_POST['address']
 ]);
 
