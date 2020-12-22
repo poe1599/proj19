@@ -9,7 +9,7 @@ require './db_connect.php';
 if (isset($_GET['check_all'])) {
     if (intval($_GET['check_all']) == 1) {
         // 將本次消費的結清
-        $pdo->query("UPDATE `order_list` SET `visible` = 0 ,`check_state`= 1 ,`check_date`=NOW() WHERE `member_sid` = $member_sid AND `next_time`= 0");
+        $pdo->query("UPDATE `order_list` SET `visible` = 0 ,`check_state`= 1 ,`check_date`=NOW() WHERE `member_sid` = $member_sid AND `visible` = 1 AND `next_time`= 0 AND `check_state`= 0");
 
         // // 將下次消費的移到本次
         // $pdo->query("UPDATE `order_list` SET `next_time`= 0 WHERE `member_sid` = $member_sid AND `next_time`= 1");

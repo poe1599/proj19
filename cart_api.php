@@ -10,7 +10,7 @@ $pageName = 'cart';
 
 // 本次購物清單
 $member = $_SESSION['member']['member_sid'];
-$sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 0";
+$sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 0 AND `check_state` = 0";
 $stmt = $pdo->query($sql);
 $row = $stmt->fetchall();
 
@@ -21,7 +21,7 @@ foreach ($row as $r) {
 }
 
 // 下次購物清單
-$n_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 1";
+$n_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 1 AND `next_time` = 1 AND `check_state` = 0";
 $n_stmt = $pdo->query($n_sql);
 $n_row = $n_stmt->fetchall();
 
@@ -32,7 +32,7 @@ foreach ($n_row as $r) {
 }
 
 // 歷史購物清單
-$h_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `check_state` = 1";
+$h_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 0 AND `next_time` = 0 AND `check_state` = 1 ORDER BY `check_date` DESC";
 $h_stmt = $pdo->query($h_sql);
 $h_row = $h_stmt->fetchall();
 
