@@ -8,9 +8,9 @@
 
 
     }
-</style>
+</style> -->
 <div class="container-fluid footer mt-5">
     <div class="row justify-content-center">
-        <div class="col text-center">HHA</div>
+        <div class="col text-center"></div>
     </div>
-</div> -->
+</div>

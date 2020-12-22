@@ -30,9 +30,9 @@ $title = '註冊會員';
                     <h5 class="card-title text-center">註冊會員</h5>
                     <!-- 上傳圖片, 如果沒資料或抓不到檔案會是灰色底, 已經有上傳或更改會即時顯現-->
                     <div class="d-flex justify-content-center">
-                        <img src="" alt="" id="preview" onclick="avatar.click()" style="width: 300px; min-height: 100px; background: #aaa;">
+                        <img src="" alt="" id="preview" onclick="avatar.click()" style="min-width: 180px; max-width:300px; min-height: 200px; background: #ccc;">
                     </div>
-                    <h6 class="text-center">請點此上傳頭像</h6>
+                    <h6 class="text-center">↑請點此上傳頭像</h6>
                     <!-- novalidate會使表單的type限制與required均失效 -->
                     <!-- onsubmit="formCheck();return false;" 在表單送出的時候觸發 -->
                     <!-- return false 會阻止表單預設的GET -->
