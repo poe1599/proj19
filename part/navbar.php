@@ -21,12 +21,27 @@ if (isset($_SESSION['member']['member_sid'])) {
 
     .order_num {
         width: 24px;
+        height: 24px;
         display: inline-block;
         background: orange;
         color: papayawhip;
         text-align: center;
         border-radius: 50%;
         line-height: 24px;
+    }
+
+    .side_order_num {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        background-color: orange;
+        line-height: 50px;
+        text-align: center;
+        position: fixed;
+        bottom: 80px;
+        right: 25px;
+        color: #fef;
     }
 </style>
 <div id="topIsHere"></div>
@@ -70,3 +85,13 @@ if (isset($_SESSION['member']['member_sid'])) {
         </div>
     </div>
 </nav>
+
+
+<!-- <a href="#">
+    <div class="goTop"><i class="fas fa-chevron-up"></i></div>
+</a> -->
+<a class="nav-link" href="./cart.php">
+
+    <div class="side_order_num <?= $order_num ? 'd-inline-block' : 'd-none' ?>" id="side_order_num"><i class="fas fa-shopping-cart mr-2"></i><?= $order_num ?></div>
+
+</a>

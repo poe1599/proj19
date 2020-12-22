@@ -19,6 +19,7 @@
             position: fixed;
             bottom: 20px;
             right: 25px;
+            color: #fef;
         }
     </style>
 </head>

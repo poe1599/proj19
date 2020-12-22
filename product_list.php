@@ -193,6 +193,7 @@
     // 發出訂單
     function order_this(event, product_sid) {
         const orderNum = document.querySelector('#order_num');
+        const sideOrderNum = document.querySelector('#side_order_num');
         const fd = new FormData(event.currentTarget.closest('.d-flex').closest('.thisForm'));
         fetch('order_insert.api.php', {
                 method: 'POST',
@@ -207,6 +208,10 @@
                     orderNum.innerHTML = obj.order_num;
                     orderNum.classList.add('d-inline-block');
                     orderNum.classList.remove('d-none');
+
+                    sideOrderNum.innerHTML = '<i class="fas fa-shopping-cart mr-2"></i>' + obj.order_num;
+                    sideOrderNum.classList.add('d-inline-block');
+                    sideOrderNum.classList.remove('d-none');
                 } else {
                     // 新增失敗
                 }
