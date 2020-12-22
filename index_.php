@@ -85,7 +85,7 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
                         <div class="d-flex justify-content-between">
                             <input type="text" name="product_sid" value="<?= $card['product_sid'] ?>" style="display: none;">
                             <select name="quantity" class="btn btn-outline-success">
-                                <?php for ($i = 1; $i < 6; $i++) : ?>
+                                <?php for ($i = 1; $i < 11; $i++) : ?>
                                     <option value="<?= $i ?>"><?= $i ?></option>
                                 <?php endfor ?>
                             </select>
