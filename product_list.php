@@ -2,44 +2,18 @@
 <?php include './part/html_haed.php' ?>
 <?php include './part/navbar.php' ?>
 <style>
-    .pageLink ul {
-        margin: 10px 0;
-    }
 
-    .card-title {
-        overflow: hidden;
-        /* white-space: nowrap; */
-
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-    }
-
-    .card-text {
-        overflow: hidden;
-        /* white-space: nowrap; */
-
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    .card-content {
-        height: 100px;
-    }
 </style>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-2 d-flex flex-column category_list">
+        <div class="col-lg-2 d-flex flex-column category_list">
             <a href="?<?php unset($_GET['category_sid']) ?>" class="btn my-2 btn-outline-success <?= !$category_sid ? 'active' : '' ?>" name="all_product">全部餐點</a>
             <?php foreach ($category as $category) : ?>
                 <a href="?category_sid=<?= $category['category_sid'] ?>" class="btn my-2 btn-outline-success <?= $category_sid == $category['category_sid'] ? 'active' : '' ?>">
                     <?= $category['category_name'] ?></a>
             <?php endforeach ?>
         </div>
-        <div class="col-md-10">
+        <div class="col-lg-10">
             <div class="pageLink">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination d-flex justify-content-center">
@@ -62,13 +36,13 @@
                             </a>
                         </li>
                         <!-- 改變頁數 -->
-                        <!-- 限制頁面太多時, 最多只能顯示前5與後5頁 -->
+                        <!-- 限制頁面太多時, 最多只能顯示前3與後3頁 -->
                         <!-- if限制不要出現負的與超過最大上限的頁面 -->
                         <?php
-                        for ($i = $page - 5; $i <= $page + 5; $i++) :
+                        for ($i = $page - 3; $i <= $page + 3; $i++) :
                             if ($i >= 1 && $i <= $totalPages) :
                         ?>
-                                <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                                <li class="page-item <?= $page == $i ? 'active' : '' ?> d-none d-md-block">
                                     <a class="page-link" href="?<?php
                                                                 $params['page'] = $i;
                                                                 echo http_build_query($params);
@@ -147,13 +121,13 @@
                             </a>
                         </li>
                         <!-- 改變頁數 -->
-                        <!-- 限制頁面太多時, 最多只能顯示前5與後5頁 -->
+                        <!-- 限制頁面太多時, 最多只能顯示前3與後3頁 -->
                         <!-- if限制不要出現負的與超過最大上限的頁面 -->
                         <?php
-                        for ($i = $page - 5; $i <= $page + 5; $i++) :
+                        for ($i = $page - 3; $i <= $page + 3; $i++) :
                             if ($i >= 1 && $i <= $totalPages) :
                         ?>
-                                <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                                <li class="page-item <?= $page == $i ? 'active' : '' ?> d-none d-md-block">
                                     <a class="page-link" href="?<?php
                                                                 $params['page'] = $i;
                                                                 echo http_build_query($params);

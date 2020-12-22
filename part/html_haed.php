@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./fontawesome/css/all.css">
     <style>
+        .pageLink ul {
+            margin: 10px 0;
+        }
+
+        .card-title {
+            overflow: hidden;
+            /* white-space: nowrap; */
+
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-text {
+            overflow: hidden;
+            /* white-space: nowrap; */
+
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-content {
+            height: 100px;
+        }
+
         .goTop {
             width: 50px;
             height: 50px;

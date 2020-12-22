@@ -42,6 +42,7 @@ if (isset($_SESSION['member']['member_sid'])) {
         bottom: 80px;
         right: 25px;
         color: #fef;
+        z-index: 99;
     }
 </style>
 <div id="topIsHere"></div>

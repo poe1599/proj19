@@ -34,6 +34,15 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         width: 100%;
         object-fit: cover;
     }
+
+    .kv_article {
+        min-height: 200px;
+    }
+
+    .kv_article_content {
+        text-align: center;
+        font-size: 4rem;
+    }
 </style>
 <div class="container-fluid">
     <div class="row my-3 kv">
@@ -44,13 +53,24 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
                 <h3 class="mt-3">簡單的餐點, 不簡單的味道</h3>
                 <h3>一口"希望", 是對生活的渴望</h3>
             </div>
-
         </div>
         <!-- <div class="col-7 kv_img">
         </div> -->
     </div>
 </div>
+<div class="container my-5">
+    <!-- <div class="kv_article row d-flex justify-content-center align-items-center"> -->
+    <div class="kv_article row ">
+        <div class="kv_article_content col-12">肚子餓了嗎? 你還在等什麼?<br>
+            <a class="btn btn-success" href="./product_list.php">快來看看有什麼好吃的!</a>
+        </div>
+    </div>
+</div>
+</div>
 <div class="container">
+    <div class="row m-3">
+        <h3>精選餐點</h3>
+    </div>
     <div class="row">
         <?php foreach ($card as $card) : ?>
             <div class="card col-lg-6 col-xl-4 d-2">
