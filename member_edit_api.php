@@ -29,6 +29,8 @@ $fields = [];
 // $pdo->quote($_POST['nickname'])跳脫表單送來的值, 接到`nickname`="的後面, 再送到$fields[]這個陣列中
 $fields[] = "`nickname`=" . $pdo->quote($_POST['nickname']);
 
+$fields[] = "`address`=" . $pdo->quote($_POST['address']);
+
 // 有沒有要改密碼
 if (!empty($_POST['new_password'])) {
     // $pdo->quote($_POST['new_password'])跳脫表單送來的值, 用sprintf()取代%s, 再送到$fields[]這個陣列中

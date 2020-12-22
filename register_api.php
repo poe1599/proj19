@@ -80,7 +80,7 @@ if (!empty($_FILES) and !empty($_FILES['avatar']['type']) and $ext_map[$_FILES['
 }
 
 // 準備註冊
-$sql = "INSERT INTO `member`(`member_sid`, `account`, `password`, `email`, `nickname`, `avatar`) VALUES (NULL, ?, SHA(?), ?, ?, ?)";
+$sql = "INSERT INTO `member`(`member_sid`, `account`, `password`, `email`, `nickname`, `avatar`, `address`) VALUES (NULL, ?, SHA(?), ?, ?, ?, ?)";
 
 // 先做$pdo->prepare($sql), 然後execute()把原先$sql中有?的地方替換並在資料庫上執行SQL語法
 $stmt = $pdo->prepare($sql);
@@ -89,7 +89,8 @@ $stmt->execute([
     $_POST['password'],
     $_POST['email'],
     $_POST['nickname'],
-    $filename
+    $filename,
+    $_POST['address']
 ]);
 
 // 回傳成功訊息

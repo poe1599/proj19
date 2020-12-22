@@ -55,6 +55,10 @@ $title = '註冊會員';
                             <label for="email">電子信箱</label>
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
+                        <div class="form-group">
+                            <label for="address">住址</label>
+                            <input type="text" class="form-control" id="address" name="address">
+                        </div>
                         <div class="d-flex justify-content-between">
                             <button type="reset" class="btn btn-outline-secondary">清空</button>
                             <button type="submit" class="btn btn-primary">註冊</button>
