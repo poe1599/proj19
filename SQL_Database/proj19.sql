@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-22 14:03:51
+-- 產生時間： 2020-12-23 07:46:56
 -- 伺服器版本： 10.4.16-MariaDB
 -- PHP 版本： 7.3.24
 
@@ -104,55 +104,32 @@ CREATE TABLE `order_list` (
   `visible` tinyint(1) NOT NULL DEFAULT 1,
   `next_time` tinyint(1) NOT NULL DEFAULT 0,
   `check_state` tinyint(1) NOT NULL DEFAULT 0,
-  `check_date` datetime DEFAULT NULL
+  `check_date` datetime DEFAULT NULL,
+  `shipping_cost` int(11) DEFAULT NULL,
+  `shipping_address` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `payment_method_list`
+--
+
+CREATE TABLE `payment_method_list` (
+  `payment_method_sid` int(11) NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `shipping_cost` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `order_list`
+-- 傾印資料表的資料 `payment_method_list`
 --
 
-INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `unit_price`, `price`, `order_date`, `visible`, `next_time`, `check_state`, `check_date`) VALUES
-(160, 26, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 1, 129, 129, '2020-12-22 11:00:23', 0, 0, 1, '2020-12-22 11:01:30'),
-(161, 26, 21, 'Tomato Tortelloni Bake\r\n', 1, 129, 129, '2020-12-22 11:00:26', 0, 0, 1, '2020-12-22 11:01:42'),
-(162, 26, 24, 'Lemon Tortelloni Palermo\r\n', 3, 129, 387, '2020-12-22 11:00:29', 1, 1, 0, NULL),
-(163, 26, 22, 'Silky Sicilian Penne\r\n', 2, 129, 258, '2020-12-22 11:00:32', 0, 0, 1, '2020-12-22 11:01:30'),
-(164, 25, 2, 'Bellissimo Bruschetta Burgers\r\n', 1, 149, 149, '2020-12-22 11:04:31', 1, 0, 0, NULL),
-(165, 25, 42, 'Santa Fe Pork Tacos\r\n', 4, 99, 396, '2020-12-22 11:04:35', 1, 0, 0, NULL),
-(166, 22, 4, 'Mozzarella-Stuffed Little Italy Burgers\r\n', 2, 149, 298, '2020-12-22 14:09:19', 0, 0, 1, '2020-12-22 14:09:30'),
-(167, 22, 9, 'Juicy Lucy Burgers\r\n', 1, 149, 149, '2020-12-22 14:09:20', 1, 1, 0, NULL),
-(168, 22, 6, 'BBQ Cheddar Pork Burgers\r\n', 4, 149, 596, '2020-12-22 14:09:23', 0, 0, 1, '2020-12-22 14:09:30'),
-(169, 22, 33, 'Cheesy Black Bean Tacos\r\n', 1, 99, 99, '2020-12-22 14:09:25', 0, 0, 1, '2020-12-22 14:09:30'),
-(170, 22, 19, 'Sun-Dried Tomato Spaghetti\r\n', 1, 129, 129, '2020-12-22 14:09:36', 0, 0, 1, '2020-12-22 14:09:44'),
-(171, 22, 21, 'Tomato Tortelloni Bake\r\n', 1, 129, 129, '2020-12-22 14:09:37', 1, 1, 0, NULL),
-(172, 22, 20, 'Chicken Sausage Rigatoni\r\n', 2, 129, 258, '2020-12-22 14:09:39', 0, 0, 1, '2020-12-22 14:09:44'),
-(173, 22, 2, 'Bellissimo Bruschetta Burgers\r\n', 1, 149, 149, '2020-12-22 14:09:48', 0, 0, 1, '2020-12-22 14:09:51'),
-(174, 22, 6, 'BBQ Cheddar Pork Burgers\r\n', 6, 149, 894, '2020-12-22 14:09:56', 1, 0, 0, NULL),
-(175, 22, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-22 14:10:12', 1, 0, 0, NULL),
-(176, 22, 35, 'Pork Carnitas Tacos\r\n', 1, 99, 99, '2020-12-22 14:10:15', 1, 0, 0, NULL),
-(177, 22, 45, 'Cheesy Breakfast Tacos\r\n', 2, 99, 198, '2020-12-22 14:10:21', 1, 0, 0, NULL),
-(178, 32, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-22 14:26:36', 1, 0, 0, NULL),
-(179, 32, 2, 'Bellissimo Bruschetta Burgers\r\n', 1, 149, 149, '2020-12-22 14:26:38', 0, 0, 1, '2020-12-22 14:27:10'),
-(180, 32, 5, 'Bacon Buckaroo Burgers\r\n', 1, 149, 149, '2020-12-22 14:26:40', 0, 0, 1, '2020-12-22 14:27:10'),
-(181, 32, 6, 'BBQ Cheddar Pork Burgers\r\n', 1, 149, 149, '2020-12-22 14:26:41', 1, 1, 0, NULL),
-(182, 32, 3, 'Smothered Pepper Jack Burgers\r\n', 1, 149, 149, '2020-12-22 14:26:42', 1, 1, 0, NULL),
-(183, 32, 7, 'Sunny-Side-Up Burgers\r\n', 1, 149, 149, '2020-12-22 14:26:53', 1, 0, 0, NULL),
-(184, 32, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-22 14:27:02', 1, 0, 0, NULL),
-(185, 33, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-22 15:10:00', 1, 0, 0, NULL),
-(186, 34, 36, 'Pork & Poblano Tacos\r\n', 4, 99, 396, '2020-12-22 15:12:35', 0, 0, 0, NULL),
-(187, 34, 48, 'Mexican Pork & Street Corn Tacos\r\n', 1, 99, 99, '2020-12-22 15:12:40', 0, 0, 0, NULL),
-(188, 34, 13, 'Melty Monterey Jack Burgers\r\n', 1, 149, 149, '2020-12-22 15:12:41', 0, 0, 0, NULL),
-(189, 34, 43, 'Speedy Start Chicken Tacos\r\n', 1, 99, 99, '2020-12-22 15:12:53', 0, 0, 0, NULL),
-(190, 34, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 2, 129, 258, '2020-12-22 15:13:13', 0, 0, 1, '2020-12-22 15:13:26'),
-(191, 34, 18, 'Shrimp Spaghetti with a Kick\r\n', 1, 129, 129, '2020-12-22 15:13:14', 0, 0, 1, '2020-12-22 15:13:26'),
-(192, 34, 19, 'Sun-Dried Tomato Spaghetti\r\n', 1, 129, 129, '2020-12-22 15:13:15', 0, 0, 1, '2020-12-22 15:13:26'),
-(193, 34, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-22 15:13:41', 0, 0, 1, '2020-12-22 15:13:52'),
-(194, 34, 5, 'Bacon Buckaroo Burgers\r\n', 1, 149, 149, '2020-12-22 15:13:42', 1, 1, 0, NULL),
-(195, 34, 6, 'BBQ Cheddar Pork Burgers\r\n', 1, 149, 149, '2020-12-22 15:13:43', 1, 1, 0, NULL),
-(196, 34, 8, '’Shroom & Gouda Pork Burgers\r\n', 6, 149, 894, '2020-12-22 15:13:45', 0, 0, 1, '2020-12-22 15:13:52'),
-(197, 34, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 3, 129, 387, '2020-12-22 15:18:00', 1, 0, 0, NULL),
-(198, 34, 21, 'Tomato Tortelloni Bake\r\n', 1, 129, 129, '2020-12-22 15:15:42', 1, 0, 0, NULL),
-(199, 34, 11, 'Gouda Pork Burgers\r\n', 3, 149, 447, '2020-12-22 18:08:07', 1, 0, 0, NULL),
-(200, 34, 14, 'Chorizo Burgers\r\n', 1, 149, 149, '2020-12-22 18:08:10', 1, 0, 0, NULL);
+INSERT INTO `payment_method_list` (`payment_method_sid`, `payment_method`, `shipping_cost`) VALUES
+(1, '超商付款', NULL),
+(2, '信用卡付款', NULL),
+(3, '貨到付款', NULL);
 
 -- --------------------------------------------------------
 
@@ -249,6 +226,12 @@ ALTER TABLE `order_list`
   ADD PRIMARY KEY (`order_sid`);
 
 --
+-- 資料表索引 `payment_method_list`
+--
+ALTER TABLE `payment_method_list`
+  ADD PRIMARY KEY (`payment_method_sid`);
+
+--
 -- 資料表索引 `product`
 --
 ALTER TABLE `product`
@@ -274,7 +257,7 @@ ALTER TABLE `member`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
