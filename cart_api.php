@@ -41,3 +41,32 @@ $h_total_cost = 0;
 foreach ($h_row as $r) {
     $h_total_cost += $r['price'];
 }
+
+
+// 同時間結帳的購物清單
+// $search_check_date = urldecode($_GET['check_date']);
+$search_check_date = isset($_GET['check_date']) ? $_GET['check_date'] : NULL;
+$t_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 0 AND `next_time` = 0 AND `check_state` = 1 AND `check_date` = '$search_check_date'";
+$t_stmt = $pdo->query($t_sql);
+$t_row = $t_stmt->fetchall();
+
+// 同時間結帳的購物總花費計算
+$t_total_cost = 0;
+foreach ($t_row as $r) {
+    $t_total_cost += $r['price'];
+}
+
+// 拿地址跟付款方式
+$t_stmt = $pdo->query($t_sql);
+$detail_row = $t_stmt->fetch();
+
+// // 設定預設的輸出訊息
+// $output = [
+//     'success' => false,
+//     'code' => 0,
+//     'error' => '參數不足',
+//     'check_date' => $search_check_date
+// ];
+
+// // 輸出訊息
+// echo json_encode($output, JSON_UNESCAPED_UNICODE);

@@ -45,7 +45,7 @@ if (isset($_POST["account"]) || isset($_POST["password"])) {
                 </div>
                 <div>
                     <h3>你好, <?= $_SESSION['member']['nickname'] ?>!</h3>
-                    <p><a href="logout.php">Log out</a></p>
+                    <p class="text-right"><a class="btn btn-info" href="logout.php">Log out</a></p>
                 </div>
 
             <?php else : ?>

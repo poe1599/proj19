@@ -77,7 +77,7 @@
                                     <td>
                                         <select name="quantity" onchange="quantityChange(<?= $row['order_sid'] ?>)">
                                             <!--  -->
-                                            <?php for ($i = 1; $i < 6; $i++) : ?>
+                                            <?php for ($i = 1; $i < 11; $i++) : ?>
                                                 <option value="<?= $i ?>" <?= $i == $row['quantity'] ? 'selected' : '' ?>><?= $i ?></option>
                                             <?php endfor ?>
                                         </select>
@@ -91,10 +91,39 @@
                             <?php endforeach ?>
                         </tbody>
                     </table>
-                    <div class="row d-flex justify-content-between">
-                        <h4>$NTD: <?= $total_cost ?></h4>
-                        <button type="button" class="btn btn-primary" onclick="check_all()">結帳</button>
+                    <div class="py-3 px-3 border-top text-right">
+                        <h6>商品金額小計: $<?= $total_cost ?></h6>
+                        <!-- <h6>運費: $shipping_cost</h6> -->
                     </div>
+                    <form name="check_detail" onsubmit="check_all(); return false;">
+                        <div class="d-flex pt-3 border-top">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="payment_method_sid">付款方式: </label><br>
+                                    <select name="payment_method_sid" id="payment_method_sid">
+                                        <option value="">請選擇付款方式</option>
+                                        <option value="1">PChomePay支付連 現金 (ATM、餘額、銀行支付)</option>
+                                        <option value="2">7-11取貨付款</option>
+                                        <option value="3">銀行或郵局轉帳</option>
+                                        <option value="4">郵局無摺存款</option>
+                                        <option value="5">貨到付款</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_address">貨運地址: </label>
+                                    <input type="text" class="form-control" id="shipping_address" name="shipping_address" value="<?= $_SESSION['member']['address'] ?>" placeholder="請填入貨運地址">
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <h5>您本次結帳消費: $<?= $total_cost ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse">
+                            <!-- <h4>$NTD: <?= $total_cost ?></h4> -->
+                            <!-- <button type="submit" class="btn btn-primary" onclick="check_all()">結帳</button> -->
+                            <button type="submit" class="btn btn-primary">結帳</button>
+                        </div>
+                    </form>
                 </div>
             <?php endif ?>
             <?php if ($n_row) : ?>
@@ -132,7 +161,7 @@
                                     <td>
                                         <select name="quantity" onchange="quantityChange(<?= $row['order_sid'] ?>)">
                                             <!--  -->
-                                            <?php for ($i = 1; $i < 6; $i++) : ?>
+                                            <?php for ($i = 1; $i < 11; $i++) : ?>
                                                 <option value="<?= $i ?>" <?= $i == $row['quantity'] ? 'selected' : '' ?>><?= $i ?></option>
                                             <?php endfor ?>
                                         </select>
@@ -146,10 +175,13 @@
                             <?php endforeach ?>
                         </tbody>
                     </table>
-                    <div class="row d-flex justify-content-between">
-                        <h4>$NTD: <?= $n_total_cost ?></h4>
-                        <!-- <button type="button" class="btn btn-primary" onclick="check_all()">結帳</button> -->
+                    <div class="py-3 px-3 border-top text-right">
+                        <h6>商品金額小計: $<?= $n_total_cost ?></h6>
+                        <!-- <h6>運費: $shipping_cost</h6> -->
                     </div>
+                    <!-- <div class="row d-flex justify-content-between">
+                        <h4>$NTD: <?= $n_total_cost ?></h4>
+                    </div> -->
                 </div>
             <?php endif ?>
         </div>
@@ -209,9 +241,51 @@
 
     // 訂單結帳(假結帳)
     function check_all() {
-        if (confirm(`是否要完成結帳?`)) {
-            location.href = 'order_check.api.php?check_all=1';
+        const payment_method_sid = document.querySelector('#payment_method_sid');
+        const shipping_address = document.querySelector('#shipping_address');
+        payment_method_sid.style.borderColor = '#eee';
+        shipping_address.style.borderColor = '#eee';
+
+        console.log(payment_method_sid.value)
+        console.log(shipping_address.value)
+
+        if (!payment_method_sid.value) {
+            payment_method_sid.style.borderColor = 'red';
+            return
         }
+        if (!shipping_address.value) {
+            shipping_address.style.borderColor = 'red';
+            return
+        }
+
+        if (confirm(`是否要完成結帳?`)) {
+            // location.href = 'order_check.api.php?check_all=1';
+
+            const fd = new FormData(document.check_detail);
+
+            fetch('order_check.api.php', {
+                    method: 'POST',
+                    body: fd
+                })
+                .then(r => r.json())
+                .then(obj => {
+                    console.log(obj);
+                    if (obj.success) {
+                        // 成功
+                        // info.classList.remove('alert-danger');
+                        // info.classList.add('alert-success');
+                        // info.style.display = 'block';
+                        // info.innerHTML = '註冊成功, 請重新登入';
+                        // document.form_register.reset();
+                    } else {
+                        // 失敗
+                        // ngMsg();
+                        // info.innerHTML = '註冊失敗, ' + obj.error;
+                    }
+                })
+        }
+        alert('感謝您本次消費, 祝您用餐愉快!');
+        location.href = 'cart.php';
     }
 </script>
 
