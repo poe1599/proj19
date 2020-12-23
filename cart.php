@@ -283,9 +283,9 @@
                         // info.innerHTML = '註冊失敗, ' + obj.error;
                     }
                 })
+            alert('感謝您本次的消費, 祝您用餐愉快!');
+            location.href = 'cart.php';
         }
-        alert('感謝您本次的消費, 祝您用餐愉快!');
-        location.href = 'cart.php';
     }
 </script>
 
