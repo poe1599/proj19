@@ -96,8 +96,6 @@ if (isset($_SESSION['member']['member_sid'])) {
 <!-- <a href="#">
     <div class="goTop"><i class="fas fa-chevron-up"></i></div>
 </a> -->
-<a class="nav-link" href="./cart.php">
-
+<a class="" href="./cart.php">
     <div class="side_order_num <?= $order_num ? 'd-inline-block' : 'd-none' ?>" id="side_order_num"><i class="fas fa-shopping-cart mr-2"></i><?= $order_num ?></div>
-
 </a>

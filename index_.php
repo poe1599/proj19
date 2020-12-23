@@ -45,7 +45,7 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
     }
 </style>
 <div class="container-fluid">
-    <div class="row my-3 kv">
+    <div class="row kv">
         <div class="d-none d-lg-block col-lg-2"></div>
         <div class="col-lg-10 kv_discript d-flex justify-content-center align-items-center">
             <div class=" col discript_box">
