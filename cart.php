@@ -125,6 +125,55 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- 結帳確認 -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" id="comfirmToPost" data-toggle="modal" data-target="#comfirmToPostCard" hidden></button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="comfirmToPostCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5> -->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                是否要完成結帳?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="escBtn" data-dismiss="modal">不, 我還想點餐</button>
+                                <button type="button" class="btn btn-primary" onclick="postCheck();">是, 我要結帳</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 結帳完提示 -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" id="checkAlert" data-toggle="modal" data-target="#checkAlertCard" hidden onclick="reloadCart()"></button>
+
+                <!-- Modal -->
+                <div class=" modal fade" id="checkAlertCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5> -->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                感謝您本次的消費, 祝您用餐愉快! </div>
+                            <div class="modal-footer py-4">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">不, 我還想點餐</button>
+                                <button type="button" class="btn btn-primary">離開</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <?php endif ?>
             <?php if ($n_row) : ?>
                 <div class="buyNextTime my-3 p-5">
@@ -239,15 +288,15 @@
         location.href = 'order_modify.api.php?order_sid=' + order_sid + '&to_this_time=1';
     }
 
-    // 訂單結帳(假結帳)
+    // 訂單結帳欄位確認(假結帳), 沒問題再觸發隱藏按鈕決定是否觸發postCheck()進行結帳
     function check_all() {
         const payment_method_sid = document.querySelector('#payment_method_sid');
         const shipping_address = document.querySelector('#shipping_address');
         payment_method_sid.style.borderColor = '#eee';
         shipping_address.style.borderColor = '#eee';
 
-        console.log(payment_method_sid.value)
-        console.log(shipping_address.value)
+        // console.log(payment_method_sid.value)
+        // console.log(shipping_address.value)
 
         if (!payment_method_sid.value) {
             payment_method_sid.style.borderColor = 'red';
@@ -257,36 +306,100 @@
             shipping_address.style.borderColor = 'red';
             return
         }
-
-        if (confirm(`是否要完成結帳?`)) {
-            // location.href = 'order_check.api.php?check_all=1';
-
-            const fd = new FormData(document.check_detail);
-
-            fetch('order_check.api.php', {
-                    method: 'POST',
-                    body: fd
-                })
-                .then(r => r.json())
-                .then(obj => {
-                    console.log(obj);
-                    if (obj.success) {
-                        // 成功
-                        // info.classList.remove('alert-danger');
-                        // info.classList.add('alert-success');
-                        // info.style.display = 'block';
-                        // info.innerHTML = '註冊成功, 請重新登入';
-                        // document.form_register.reset();
-                    } else {
-                        // 失敗
-                        // ngMsg();
-                        // info.innerHTML = '註冊失敗, ' + obj.error;
-                    }
-                })
-            alert('感謝您本次的消費, 祝您用餐愉快!');
-            location.href = 'cart.php';
-        }
+        const comfirmToPost = document.querySelector('#comfirmToPost');
+        comfirmToPost.click();
     }
+
+    // POST結帳, POST完觸發隱藏按鈕叫出成功通知
+    function postCheck() {
+        const fd = new FormData(document.check_detail);
+        fetch('order_check.api.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+                if (obj.success) {
+                    // 成功
+                    // info.classList.remove('alert-danger');
+                    // info.classList.add('alert-success');
+                    // info.style.display = 'block';
+                    // info.innerHTML = '註冊成功, 請重新登入';
+                    // document.form_register.reset();
+                } else {
+                    // 失敗
+                    // ngMsg();
+                    // info.innerHTML = '註冊失敗, ' + obj.error;
+                }
+            })
+        // 先案個按鈕離開提示視窗
+        const escBtn = document.querySelector('#escBtn');
+        escBtn.click();
+        // 再按按鈕觸發成功通知
+        const checkAlert = document.querySelector('#checkAlert');
+        checkAlert.click();
+    }
+
+    // 當成功通知的按鈕被點擊時觸發, 點擊任何地方都會重新進'cart.php'
+    function reloadCart() {
+        document.body.addEventListener('mousedown', e => {
+            location.href = 'cart.php';
+        })
+    }
+
+    // 結帳功能說明
+    // 按下"結帳"會用onsubmit觸發check_all(), 如果沒問題以comfirmToPost.click()點出是否確認結帳, 點否的話就停止離開, 點是的話onclick="postCheck();", 先進行表單POST, 再自動離開提示視窗, 接著觸發checkAlert.click()叫出成功結帳的通知, 同時觸發onclick="reloadCart()", 點任何位置頁面都會刷新回購物車
+
+
+    // 原訂單結帳(假結帳)(簡易無特效版)
+    // function check_all() {
+    //     const payment_method_sid = document.querySelector('#payment_method_sid');
+    //     const shipping_address = document.querySelector('#shipping_address');
+    //     payment_method_sid.style.borderColor = '#eee';
+    //     shipping_address.style.borderColor = '#eee';
+
+    //     console.log(payment_method_sid.value)
+    //     console.log(shipping_address.value)
+
+    //     if (!payment_method_sid.value) {
+    //         payment_method_sid.style.borderColor = 'red';
+    //         return
+    //     }
+    //     if (!shipping_address.value) {
+    //         shipping_address.style.borderColor = 'red';
+    //         return
+    //     }
+
+    //     if (confirm(`是否要完成結帳?`)) {
+    //         // location.href = 'order_check.api.php?check_all=1';
+
+    //         const fd = new FormData(document.check_detail);
+
+    //         fetch('order_check.api.php', {
+    //                 method: 'POST',
+    //                 body: fd
+    //             })
+    //             .then(r => r.json())
+    //             .then(obj => {
+    //                 console.log(obj);
+    //                 if (obj.success) {
+    //                     // 成功
+    //                     // info.classList.remove('alert-danger');
+    //                     // info.classList.add('alert-success');
+    //                     // info.style.display = 'block';
+    //                     // info.innerHTML = '註冊成功, 請重新登入';
+    //                     // document.form_register.reset();
+    //                 } else {
+    //                     // 失敗
+    //                     // ngMsg();
+    //                     // info.innerHTML = '註冊失敗, ' + obj.error;
+    //                 }
+    //             })
+    //     }
+    //     alert('感謝您本次的消費, 祝您用餐愉快!');
+    //     location.href = 'cart.php';
+    // }
 </script>
 
 <?php include './part/html_foot.php' ?>
