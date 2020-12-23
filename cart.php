@@ -103,7 +103,7 @@
                                     <select name="payment_method_sid" id="payment_method_sid">
                                         <option value="">請選擇付款方式</option>
                                         <option value="1">PChomePay支付連 現金 (ATM、餘額、銀行支付)</option>
-                                        <option value="2">7-11取貨付款</option>
+                                        <!-- <option value="2">7-11取貨付款</option> -->
                                         <option value="3">銀行或郵局轉帳</option>
                                         <option value="4">郵局無摺存款</option>
                                         <option value="5">貨到付款</option>
@@ -284,7 +284,7 @@
                     }
                 })
         }
-        alert('感謝您本次消費, 祝您用餐愉快!');
+        alert('感謝您本次的消費, 祝您用餐愉快!');
         location.href = 'cart.php';
     }
 </script>
