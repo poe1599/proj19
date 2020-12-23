@@ -48,7 +48,7 @@ $title = '編輯會員資料';
                             <input type="text" class="form-control" id="nickname" name="nickname" value="<?= $_SESSION['member']['nickname'] ?>">
                         </div>
                         <div class="form-group">
-                            <label for="mobile">暱稱</label>
+                            <label for="mobile">行動電話</label>
                             <input type="text" class="form-control" id="mobile" name="mobile" value="<?= $_SESSION['member']['mobile'] ?>">
                         </div>
                         <div class="form-group">
