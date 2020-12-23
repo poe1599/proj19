@@ -48,6 +48,7 @@
             bottom: 20px;
             right: 25px;
             color: #fef;
+            text-shadow: 0.1em 0.1em 0.2em black;
         }
     </style>
 </head>

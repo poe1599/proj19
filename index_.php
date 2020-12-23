@@ -24,6 +24,7 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
     .kv_discript .discript_box h1,
     .kv_discript .discript_box h3 {
         font-weight: 900;
+        text-shadow: 0.1em 0.1em 0.2em black;
     }
 
     .kv_img {

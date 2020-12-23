@@ -14,14 +14,15 @@ if (isset($_SESSION['member']['member_sid'])) {
 ?>
 
 <style>
-    /* nav .container {
-        background-color: #ae3;
-        border-radius: 10px;
-    } */
+    .navbar-expand-lg {
+        background-color: #FBE79A;
+    }
 
     .navbar .nav-item.active {
-        background-color: #C4ED92;
-        border-radius: 10px;
+        background-color: #FAD689;
+        border-radius: 50px;
+        /* box-shadow: inset 0px 0px 5px 1px #000; */
+        box-shadow: inset -0.1em -0.1em 0.2em #838A2D;
     }
 
     .order_num {
@@ -33,6 +34,7 @@ if (isset($_SESSION['member']['member_sid'])) {
         text-align: center;
         border-radius: 50%;
         line-height: 24px;
+        text-shadow: 0.1em 0.1em 0.2em black;
     }
 
     .side_order_num {
@@ -48,10 +50,11 @@ if (isset($_SESSION['member']['member_sid'])) {
         right: 25px;
         color: #fef;
         z-index: 99;
+        text-shadow: 0.1em 0.1em 0.2em black;
     }
 </style>
 <div id="topIsHere"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="./index_.php">希望峰食堂</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
