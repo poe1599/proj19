@@ -31,8 +31,44 @@ foreach ($n_row as $r) {
     $n_total_cost += $r['price'];
 }
 
+// // 歷史購物清單
+// $h_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 0 AND `next_time` = 0 AND `check_state` = 1 ORDER BY `check_date` DESC";
+// $h_stmt = $pdo->query($h_sql);
+// $h_row = $h_stmt->fetchall();
+
+// // 歷史購物總花費計算
+// $h_total_cost = 0;
+// foreach ($h_row as $r) {
+//     $h_total_cost += $r['price'];
+// }
+
+// 設一個空陣列, 準備裝要修改資料
+$fields = [];
+
+// 日期填入防呆
+if (isset($_GET['date_after']) && isset($_GET['date_before'])) {
+    // 日期有以後 沒以前
+    if (isset($_GET['date_after']) && $_GET['date_before'] == '') {
+        $fields[] = " AND `check_date`>=" . $pdo->quote($_GET['date_after']);
+    }
+    // 日期沒以後 有以前
+    if ($_GET['date_after'] == '' && isset($_GET['date_before'])) {
+        $fields[] = " AND `check_date`<" . $pdo->quote($_GET['date_before']);
+    }
+    // 日期有以後 有以前
+    if (($_GET['date_after']) != '' && $_GET['date_before'] != '') {
+        if (strtotime($_GET['date_after']) < strtotime($_GET['date_before'])) {
+            $fields[] = " AND `check_date`>=" . $pdo->quote($_GET['date_after']);
+            $fields[] = " AND `check_date`<" . $pdo->quote($_GET['date_before']);
+        } else {
+            $fields[] = " AND `check_date`>=" . $pdo->quote($_GET['date_before']);
+            $fields[] = " AND `check_date`<" . $pdo->quote($_GET['date_after']);
+        }
+    }
+}
+
 // 歷史購物清單
-$h_sql = "SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 0 AND `next_time` = 0 AND `check_state` = 1 ORDER BY `check_date` DESC";
+$h_sql = sprintf("SELECT * FROM `order_list` WHERE `member_sid` = $member AND `visible` = 0 AND `next_time` = 0 AND `check_state` = 1 %s ORDER BY `check_date` DESC", implode('', $fields));
 $h_stmt = $pdo->query($h_sql);
 $h_row = $h_stmt->fetchall();
 

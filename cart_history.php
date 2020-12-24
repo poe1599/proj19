@@ -46,6 +46,13 @@
         <div class="col-md-2 d-flex flex-column">
             <a href="./cart.php" class="btn my-2 btn-outline-success" name="">我的購物車</a>
             <a href="./cart_history.php" class="btn my-2 btn-outline-success active" name="">歷史清單</a>
+            <form class="w-100 my-5">
+                <label for="date_after">從~起</label><br>
+                <input class="btn btn-info my-2 w-100" type="date" name="date_after" id="date_after"><br>
+                <label for="date_before">到~止</label><br>
+                <input class="btn btn-info my-2 w-100" type="date" name="date_before" id="date_before"><br>
+                <button class="btn btn-primary my-2 w-100" type="submit">搜尋</button>
+            </form>
         </div>
         <div class="col-md-10">
             <?php if ($t_row) : ?>
