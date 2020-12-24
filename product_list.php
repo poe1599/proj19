@@ -14,6 +14,12 @@
             <?php endforeach ?>
         </div>
         <div class="col-lg-10">
+
+            <form class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="你想吃什麼?" value="<?= $search ?>" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">找出來</button>
+            </form>
+
             <div class="pageLink">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination d-flex justify-content-center">
@@ -74,6 +80,7 @@
                     </ul>
                 </nav>
             </div>
+
             <div class="row">
                 <?php foreach ($card as $card) : ?>
                     <div class="card col-lg-6 col-xl-4 d-2">

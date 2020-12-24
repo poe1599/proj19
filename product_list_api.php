@@ -5,7 +5,7 @@ require './db_connect.php';
 $title = '商品'; // 標題
 $pageName = 'product_list'; // 讓navbar對應的選單變色
 
-// 先確認有沒有$_GET['search'], 搜尋有value並送出的話$_GET['search']應該要取得input name="search"對應的value
+// 確認有沒有分類的GET
 $category_sid = isset($_GET['category_sid']) ? ($_GET['category_sid']) : '';
 $params = []; // 搜尋的query string
 $where = 'WHERE 1 AND `category_sid`'; // 搜尋`category_sid`裡面的內容
@@ -13,6 +13,14 @@ if (!empty($category_sid)) {
     $where .= sprintf(" = %s ", $category_sid);
     $params['category_sid'] = $category_sid;
 }
+
+// 先確認有沒有$_GET['search'], 搜尋有value並送出的話$_GET['search']應該要取得input name="search"對應的value
+$search = isset($_GET['search']) ? ($_GET['search']) : '';
+if (!empty($search)) {
+    $where .= sprintf(" AND `product_name` LIKE %s ", $pdo->quote('%' . $search . '%'));
+    $params['search'] = $search;
+}
+
 
 // 定義資料列表有幾頁
 // 用$_GET['page']讀取query string, 沒有的話指定為1
@@ -48,3 +56,5 @@ $c_sql = "SELECT * FROM `category`";
 // 將$stmt指引到資料庫的特定表單
 $c_stmt = $pdo->query($c_sql);
 $category = $c_stmt->fetchall();
+
+// echo json_encode($params, JSON_UNESCAPED_UNICODE);
