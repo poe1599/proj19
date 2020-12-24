@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-24 03:15:56
+-- 產生時間： 2020-12-24 12:32:36
 -- 伺服器版本： 10.4.16-MariaDB
 -- PHP 版本： 7.3.24
 
@@ -76,7 +76,7 @@ INSERT INTO `member` (`member_sid`, `email`, `account`, `password`, `nickname`, 
 (19, 'Komaeda@gmail.com', 'Komaeda', '7c4a8d09ca3762af61e59520943dc26494f8941b', '狛枝 凪斗', 'Komaeda.png', '0958624932', '台北市大安區復興南路一段390號2樓'),
 (20, 'Kuwata@gmail.com', 'Kuwata', '7c4a8d09ca3762af61e59520943dc26494f8941b', '桑田 怜恩', 'Kuwata.png', '0921448173', '台北市大安區復興南路一段390號2樓'),
 (21, 'Maizono@gmail.com', 'Maizono', '7c4a8d09ca3762af61e59520943dc26494f8941b', '舞園 さやか', 'Maizono.png', '0912017827', '台北市大安區復興南路一段390號2樓'),
-(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白熊', 'Monokuma.png', '0930091478', '台北市大安區復興南路一段390號2樓'),
+(22, 'Monokuma@gmail.com', 'Monokuma', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白熊', 'Monokuma.png', '0930091478', '台北市大安區復興南路一段390號3樓'),
 (23, 'Monomi@gmail.com', 'Monomi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '黑白美', 'Monomi.png', '0922988592', '台北市大安區復興南路一段390號2樓'),
 (24, 'Naegi@gmail.com', 'Naegi', '7c4a8d09ca3762af61e59520943dc26494f8941b', '苗木 誠', 'Naegi.png', '0934176083', '台北市大安區復興南路一段390號2樓'),
 (25, 'Nanami@gmail.com', 'Nanami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '七海 千秋', 'Nanami.png', '0956018299', '台北市大安區復興南路一段390號2樓'),
@@ -84,8 +84,7 @@ INSERT INTO `member` (`member_sid`, `email`, `account`, `password`, `nickname`, 
 (27, 'Owada@gmail.com', 'Owada', '7c4a8d09ca3762af61e59520943dc26494f8941b', '大和田 紋土', 'Owada.png', '0920597387', '台北市大安區復興南路一段390號2樓'),
 (28, 'Seresutia@gmail.com', 'Seresutia', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'セレスティア ルーデンベルク', 'Seresutia.png', '0972968171', '台北市大安區復興南路一段390號2樓'),
 (29, 'Togami@gmail.com', 'Togami', '7c4a8d09ca3762af61e59520943dc26494f8941b', '十神 白夜', 'Togami.png', '0988703264', '台北市大安區復興南路一段390號2樓'),
-(30, 'Yamada@gmail.com', 'Yamada', '7c4a8d09ca3762af61e59520943dc26494f8941b', '山田 一二三', 'Yamada.png', '0932085565', '台北市大安區復興南路一段390號2樓'),
-(35, 'PPOO@h.com', 'AAKK', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'LKK', NULL, '0912345676', '海邊');
+(30, 'Yamada@gmail.com', 'Yamada', '7c4a8d09ca3762af61e59520943dc26494f8941b', '山田 一二三', 'Yamada.png', '0932085565', '台北市大安區復興南路一段390號2樓');
 
 -- --------------------------------------------------------
 
@@ -116,16 +115,28 @@ CREATE TABLE `order_list` (
 --
 
 INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `unit_price`, `price`, `order_date`, `visible`, `next_time`, `check_state`, `check_date`, `shipping_cost`, `shipping_address`, `payment_method`) VALUES
-(239, 22, 43, 'Speedy Start Chicken Tacos\r\n', 1, 99, 99, '2020-12-24 08:50:50', 0, 0, 1, '2020-12-24 08:51:51', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
-(240, 22, 45, 'Cheesy Breakfast Tacos\r\n', 6, 99, 594, '2020-12-24 08:50:52', 0, 0, 1, '2020-12-24 08:52:15', NULL, '台北市大安區復興南路一段390號2樓', '銀行或郵局轉帳'),
-(241, 22, 3, 'Smothered Pepper Jack Burgers\r\n', 2, 149, 298, '2020-12-24 08:51:04', 0, 0, 1, '2020-12-24 08:51:51', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
-(242, 22, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 1, 129, 129, '2020-12-24 08:52:54', 1, 0, 0, NULL, NULL, NULL, NULL),
-(243, 22, 21, 'Tomato Tortelloni Bake\r\n', 2, 129, 258, '2020-12-24 09:04:59', 0, 0, 1, '2020-12-24 09:05:13', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
-(244, 22, 22, 'Silky Sicilian Penne\r\n', 1, 129, 129, '2020-12-24 08:52:57', 0, 0, 1, '2020-12-24 09:10:06', NULL, '台北市大安區復興南路一段390號2樓', 'PChomePay支付連 現金 (ATM、餘額、銀行支付)'),
-(245, 22, 24, 'Lemon Tortelloni Palermo\r\n', 1, 129, 129, '2020-12-24 08:52:58', 0, 0, 1, '2020-12-24 09:10:06', NULL, '台北市大安區復興南路一段390號2樓', 'PChomePay支付連 現金 (ATM、餘額、銀行支付)'),
-(246, 22, 27, 'Buon Appetito Bacon Chicken\r\n', 1, 129, 129, '2020-12-24 08:53:00', 1, 0, 0, NULL, NULL, NULL, NULL),
-(247, 22, 28, 'Jalapeño Business Bacon Mac & Cheese\r\n', 2, 129, 258, '2020-12-24 08:53:03', 1, 0, 0, NULL, NULL, NULL, NULL),
-(248, 22, 30, 'Pork Sausage Rigatoni in a Creamy Sauce\r\n', 1, 129, 129, '2020-12-24 08:53:05', 1, 1, 0, NULL, NULL, NULL, NULL);
+(261, 22, 1, 'Alpine Turkey Burgers', 1, 149, 149, '2020-12-24 19:20:41', 0, 0, 1, '2020-08-05 19:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(262, 22, 2, 'Bellissimo Bruschetta Burgers\r\n', 2, 149, 298, '2020-12-24 19:20:42', 0, 0, 1, '2020-08-05 19:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(263, 22, 3, 'Smothered Pepper Jack Burgers\r\n', 3, 149, 447, '2020-12-24 19:20:44', 0, 0, 1, '2020-08-05 19:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(264, 22, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 2, 129, 258, '2020-12-24 19:21:39', 0, 0, 1, '2020-08-05 19:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(265, 22, 18, 'Shrimp Spaghetti with a Kick\r\n', 5, 129, 645, '2020-12-24 19:20:52', 0, 0, 1, '2020-08-15 09:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(266, 22, 19, 'Sun-Dried Tomato Spaghetti\r\n', 3, 129, 387, '2020-12-24 19:21:41', 0, 0, 1, '2020-08-15 09:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(267, 22, 33, 'Cheesy Black Bean Tacos\r\n', 3, 99, 297, '2020-12-24 19:20:59', 0, 0, 1, '2020-08-18 16:43:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(268, 22, 37, 'Banh-Mi-Style Chicken Tacos\r\n', 1, 89, 89, '2020-12-24 19:21:01', 0, 0, 1, '2020-08-18 16:43:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(269, 22, 43, 'Speedy Start Chicken Tacos\r\n', 1, 99, 99, '2020-12-24 19:21:03', 0, 0, 1, '2020-08-26 07:32:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(270, 22, 49, 'Scallops over Truffled Mushroom Risotto\r\n', 3, 88, 264, '2020-12-24 19:21:07', 0, 0, 1, '2020-08-26 07:32:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(271, 22, 53, 'Pork Sausage & Tomato Risotto\r\n', 1, 108, 108, '2020-12-24 19:21:08', 0, 0, 1, '2020-08-30 16:47:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(272, 22, 57, 'Asparagus Risotto\r\n', 1, 98, 98, '2020-12-24 19:21:09', 0, 0, 1, '2020-08-30 16:47:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(273, 22, 54, 'Scallops Over Butternut Squash Risotto\r\n', 1, 108, 108, '2020-12-24 19:21:10', 0, 0, 1, '2020-09-09 21:37:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(274, 22, 59, 'Sausage and Tomato Risotto\r\n', 1, 108, 108, '2020-12-24 19:21:13', 0, 0, 1, '2020-09-19 21:37:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(275, 22, 61, 'Sausage Pasta Dinner\r\n', 1, 108, 108, '2020-12-24 19:21:14', 0, 0, 1, '2020-10-13 11:26:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(276, 22, 27, 'Buon Appetito Bacon Chicken\r\n', 3, 129, 387, '2020-12-24 19:21:44', 0, 0, 1, '2020-10-23 11:26:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(277, 22, 26, 'Creamy Lemon Spinach Ricotta Ravioli\r\n', 1, 129, 129, '2020-12-24 19:21:20', 0, 0, 1, '2020-11-10 11:26:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(278, 22, 30, 'Pork Sausage Rigatoni in a Creamy Sauce\r\n', 1, 129, 129, '2020-12-24 19:21:21', 0, 0, 1, '2020-11-13 15:46:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(279, 22, 3, 'Smothered Pepper Jack Burgers\r\n', 4, 149, 596, '2020-12-24 19:21:46', 0, 0, 1, '2020-11-25 15:46:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(280, 22, 4, 'Mozzarella-Stuffed Little Italy Burgers\r\n', 1, 149, 149, '2020-12-24 19:21:24', 0, 0, 1, '2020-12-06 10:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(281, 22, 5, 'Bacon Buckaroo Burgers\r\n', 1, 149, 149, '2020-12-24 19:21:25', 0, 0, 1, '2020-12-20 10:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款'),
+(282, 22, 8, '’Shroom & Gouda Pork Burgers\r\n', 1, 149, 149, '2020-12-24 19:21:26', 0, 0, 1, '2020-12-24 19:22:19', NULL, '台北市大安區復興南路一段390號3樓', '貨到付款');
 
 -- --------------------------------------------------------
 
@@ -144,9 +155,9 @@ CREATE TABLE `payment_method_list` (
 --
 
 INSERT INTO `payment_method_list` (`payment_method_sid`, `payment_method`, `shipping_cost`) VALUES
-(1, '超商付款', NULL),
-(2, '信用卡付款', NULL),
-(3, '貨到付款', NULL);
+(1, '超商付款', 30),
+(2, '信用卡付款', 20),
+(3, '貨到付款', 50);
 
 -- --------------------------------------------------------
 
@@ -282,13 +293,13 @@ ALTER TABLE `category`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `member_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
