@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-23 07:46:56
+-- 產生時間： 2020-12-24 03:15:56
 -- 伺服器版本： 10.4.16-MariaDB
 -- PHP 版本： 7.3.24
 
@@ -39,7 +39,8 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`category_sid`, `category_name`) VALUES
 (1, '漢堡套餐'),
 (2, '義大利麵套餐'),
-(3, '墨西哥夾餅');
+(3, '墨西哥夾餅'),
+(4, '燉飯');
 
 -- --------------------------------------------------------
 
@@ -109,6 +110,22 @@ CREATE TABLE `order_list` (
   `shipping_address` varchar(255) DEFAULT NULL,
   `payment_method` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `order_list`
+--
+
+INSERT INTO `order_list` (`order_sid`, `member_sid`, `product_sid`, `product_name`, `quantity`, `unit_price`, `price`, `order_date`, `visible`, `next_time`, `check_state`, `check_date`, `shipping_cost`, `shipping_address`, `payment_method`) VALUES
+(239, 22, 43, 'Speedy Start Chicken Tacos\r\n', 1, 99, 99, '2020-12-24 08:50:50', 0, 0, 1, '2020-12-24 08:51:51', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
+(240, 22, 45, 'Cheesy Breakfast Tacos\r\n', 6, 99, 594, '2020-12-24 08:50:52', 0, 0, 1, '2020-12-24 08:52:15', NULL, '台北市大安區復興南路一段390號2樓', '銀行或郵局轉帳'),
+(241, 22, 3, 'Smothered Pepper Jack Burgers\r\n', 2, 149, 298, '2020-12-24 08:51:04', 0, 0, 1, '2020-12-24 08:51:51', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
+(242, 22, 17, 'Creamy Dreamy Mushroom Cavatappi\r\n', 1, 129, 129, '2020-12-24 08:52:54', 1, 0, 0, NULL, NULL, NULL, NULL),
+(243, 22, 21, 'Tomato Tortelloni Bake\r\n', 2, 129, 258, '2020-12-24 09:04:59', 0, 0, 1, '2020-12-24 09:05:13', NULL, '台北市大安區復興南路一段390號2樓', '貨到付款'),
+(244, 22, 22, 'Silky Sicilian Penne\r\n', 1, 129, 129, '2020-12-24 08:52:57', 0, 0, 1, '2020-12-24 09:10:06', NULL, '台北市大安區復興南路一段390號2樓', 'PChomePay支付連 現金 (ATM、餘額、銀行支付)'),
+(245, 22, 24, 'Lemon Tortelloni Palermo\r\n', 1, 129, 129, '2020-12-24 08:52:58', 0, 0, 1, '2020-12-24 09:10:06', NULL, '台北市大安區復興南路一段390號2樓', 'PChomePay支付連 現金 (ATM、餘額、銀行支付)'),
+(246, 22, 27, 'Buon Appetito Bacon Chicken\r\n', 1, 129, 129, '2020-12-24 08:53:00', 1, 0, 0, NULL, NULL, NULL, NULL),
+(247, 22, 28, 'Jalapeño Business Bacon Mac & Cheese\r\n', 2, 129, 258, '2020-12-24 08:53:03', 1, 0, 0, NULL, NULL, NULL, NULL),
+(248, 22, 30, 'Pork Sausage Rigatoni in a Creamy Sauce\r\n', 1, 129, 129, '2020-12-24 08:53:05', 1, 1, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -199,7 +216,21 @@ INSERT INTO `product` (`product_sid`, `product_name`, `description`, `category_s
 (45, 'Cheesy Breakfast Tacos\r\n', 'with Charred Veggies, Pico de Gallo & Smoky Crema (2 servings)\r\n', 3, 99, 1, '2020-12-21 10:01:12'),
 (46, 'Chicken Stir-Fry Tacos\r\n', 'with Tangy Cabbage Slaw & Sriracha Mayo\r\n', 3, 89, 1, '2020-12-21 10:01:12'),
 (47, 'Mojo Pork Tacos\r\n', 'with Creamy Cilantro Slaw\r\n', 3, 99, 1, '2020-12-21 10:01:12'),
-(48, 'Mexican Pork & Street Corn Tacos\r\n', 'with Chili Lime Crema\r\n', 3, 99, 1, '2020-12-21 10:01:12');
+(48, 'Mexican Pork & Street Corn Tacos\r\n', 'with Chili Lime Crema\r\n', 3, 99, 1, '2020-12-21 10:01:12'),
+(49, 'Scallops over Truffled Mushroom Risotto\r\n', 'with a Brown Butter Herb Sauce\r\n', 4, 88, 1, '2020-12-24 10:12:10'),
+(50, 'Pork Sausage & Bell Pepper Risotto\r\n', 'with Parmesan & Lemon\r\n', 4, 88, 1, '2020-12-24 10:12:10'),
+(51, 'Mushroom & Chive Risotto\r\n', 'swirled with Garlic Herb Butter\r\n', 4, 88, 1, '2020-12-24 10:12:10'),
+(52, 'Balsamic Tomato Parmesan Risotto\r\n', 'with Basil Oil & Zucchini\r\n', 4, 98, 1, '2020-12-24 10:12:10'),
+(53, 'Pork Sausage & Tomato Risotto\r\n', 'with Lemony Zucchini Ribbons\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(54, 'Scallops Over Butternut Squash Risotto\r\n', 'with Lemon-Sage Brown Butter\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(55, 'Sausage and Pea Risotto\r\n', 'with Lemon and Parmesan\r\n', 4, 98, 1, '2020-12-24 10:12:10'),
+(56, 'Basil-Oil-Topped Parmesan Risotto\r\n', 'with Balsamic Tomatoes and Zucchini\r\n', 4, 98, 1, '2020-12-24 10:12:10'),
+(57, 'Asparagus Risotto\r\n', 'with Garlic Herb Butter and Parmesan\r\n', 4, 98, 1, '2020-12-24 10:12:10'),
+(58, 'Crab Cakes with Tarragon Aioli\r\n', 'over Garlic Herb Risotto with Lemony Zucchini Ribbons\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(59, 'Sausage and Tomato Risotto\r\n', 'with Lemony Zucchini Ribbons\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(60, '20 oz Rib-Eye Steaks Over Risotto\r\n', 'with Tomato Onion Jam and Freshly Cracked Peppercorns\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(61, 'Sausage Pasta Dinner\r\n', 'with a Shallot Zucchini Risotto for Lunch\r\n', 4, 108, 1, '2020-12-24 10:12:10'),
+(62, 'Lemony Shrimp Risotto\r\n', 'with Roasted Zucchini\r\n', 4, 108, 1, '2020-12-24 10:12:10');
 
 --
 -- 已傾印資料表的索引
@@ -245,7 +276,7 @@ ALTER TABLE `product`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
@@ -257,13 +288,13 @@ ALTER TABLE `member`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `product_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
