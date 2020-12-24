@@ -3,6 +3,13 @@
 <?php include './part/navbar.php' ?>
 
 <style>
+    td {
+        max-width: 200px;
+        Text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
     .remove-icon a i {
         color: #ccc;
     }
