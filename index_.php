@@ -9,6 +9,63 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
 <?php include './part/html_haed.php' ?>
 <?php include './part/navbar.php' ?>
 <style>
+    .kv_top {
+        height: 60vh;
+    }
+
+    .kv_top_yellow {
+        height: 100%;
+        border-radius: 75px;
+        background-color: #F3E575;
+
+    }
+
+    .card-body>.card-title {
+        font-size: 58px;
+    }
+
+    .kv_top_img {
+        padding: 0px;
+        position: relative;
+    }
+
+    .kv_top_img>img {
+        width: 130%;
+        position: absolute;
+        /* bottom: 0vh; */
+    }
+
+    .kv_tag {
+        width: 100%;
+        height: 85px;
+        background-color: #A2A3A5;
+        border-radius: 50px 0 0 50px;
+        padding: 1rem;
+    }
+
+    .kv_tag_circle {
+        width: 53px;
+        height: 100%;
+        background-color: white;
+        border-radius: 50%;
+        line-height: 53px;
+        color: #A2A3A5;
+    }
+
+    .kv_tag_text {
+        color: white;
+        margin-left: 2rem;
+        line-height: 53px;
+        /* Text-overflow: ellipsis; */
+        /* overflow: hidden; */
+        /* white-space: nowrap; */
+    }
+
+    .kv_top_white {
+        height: 25%;
+        background-color: transparent;
+    }
+
     .kv {
         height: 700px;
         background: url(./img/kv.webp) center center no-repeat;
@@ -45,6 +102,8 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         font-size: 4rem;
     }
 </style>
+
+
 <div class="container-fluid">
     <div class="row kv">
         <div class="d-none d-lg-block col-lg-2"></div>
@@ -98,6 +157,45 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         <?php endforeach ?>
     </div>
 </div>
+
+<div class="container kv_top mt-5 d-none d-xl-block">
+    <div class="row kv_top_yellow justify-content-between">
+        <div class="col-4 d-flex align-items-center">
+            <div class="text-center">
+                <div class="card-body">
+                    <h5 class="card-title text-right">希望峰食堂</h5>
+                    <p class="card-text text-right" style="color: #A2A3A5;">————蘇格拉底<br>阿姨, 我不想努力了</p>
+                    <a href="./product_list.php" class="btn btn-success ">立即開吃</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 kv_top_img d-flex align-items-center justify-content-center">
+            <img class="" src="./img/hero01.png" alt="">
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3 px-0">
+            <div class="h-50 d-flex align-items-end">
+                <div class="kv_tag mb-4 d-flex">
+                    <div class="kv_tag_circle text-center"><i class="fas fa-utensils"></i></div>
+                    <a href="./cart.php">
+                        <div class="kv_tag_text">我想點餐了</div>
+                    </a>
+                </div>
+            </div>
+            <div class="h-50 d-flex align-items-start">
+                <div class=" kv_tag mt-4 d-flex">
+                    <div class="kv_tag_circle text-center"><i class="fas fa-splotch"></i></div>
+                    <a href="./product_list.php">
+                        <div class="kv_tag_text">我想看看有什麼餐點</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row kv_top_white"></div> -->
+</div>
+
+
 
 <?php include './part/footer.php' ?>
 <?php include './part/script.php' ?>
