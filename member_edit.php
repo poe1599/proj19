@@ -85,6 +85,9 @@ $title = '編輯會員資料';
     const reader = new FileReader();
     const password = document.querySelector('#password');
     const new_password = document.querySelector('#new_password');
+    const nickname = document.querySelector('#nickname');
+    const mobile = document.querySelector('#mobile');
+    const address = document.querySelector('#address');
 
     reader.addEventListener('load', function(event) {
         preview.src = reader.result;

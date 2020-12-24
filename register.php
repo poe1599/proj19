@@ -201,10 +201,12 @@ $title = '註冊會員';
                         info.style.display = 'block';
                         info.innerHTML = '註冊成功, 請重新登入';
                         document.form_register.reset();
+                        alert('註冊成功, 請重新登入');
                     } else {
                         // 失敗
                         ngMsg();
                         info.innerHTML = '註冊失敗, ' + obj.error;
+                        alert('註冊失敗, ' + obj.error);
                     }
                 })
         }
