@@ -65,7 +65,7 @@ $title = '編輯會員資料';
                             <input type="password" class="form-control" id="password" name="password" required>
                             <small class="form-text error_msg" style="display: none;"></small>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between flex-row-reverse">
                             <button type="submit" class="btn btn-primary">提交</button>
                         </div>
                     </form>
@@ -84,6 +84,7 @@ $title = '編輯會員資料';
     const preview = document.querySelector('#preview');
     const reader = new FileReader();
     const password = document.querySelector('#password');
+    const new_password = document.querySelector('#new_password');
 
     reader.addEventListener('load', function(event) {
         preview.src = reader.result;
@@ -147,11 +148,17 @@ $title = '編輯會員資料';
                         info.classList.remove('alert-danger');
                         info.classList.add('alert-success');
                         info.innerHTML = '更新成功';
+                        password.value = '';
+                        new_password.value = '';
+                        alert('更新成功');
                     } else {
                         // 失敗
                         info.classList.remove('alert-success');
                         info.classList.add('alert-danger');
                         info.innerHTML = '更新失敗 ' + obj.error;
+                        password.value = '';
+                        new_password.value = '';
+                        alert('更新失敗');
                     }
                     info.style.display = 'block';
                 });

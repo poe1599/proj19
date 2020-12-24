@@ -14,6 +14,7 @@ $output = [
     'code' => 0,
     'error' => '參數不足',
     'post' => $_POST,
+    'PP' => $_SESSION['member']['password'],
 ];
 
 // 辨別上傳檔案所使用的陣列
@@ -32,7 +33,7 @@ $fields[] = "`nickname`=" . $pdo->quote($_POST['nickname']);
 $fields[] = "`address`=" . $pdo->quote($_POST['address']);
 
 // 如果密碼錯誤
-if ($_POST['password'] != $_SESSION['member']['password']) {
+if (sha1($_POST['password']) != $_SESSION['member']['password']) {
     $output['error'] = '密碼錯誤';
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
