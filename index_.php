@@ -17,6 +17,7 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
         height: 100%;
         border-radius: 75px;
         background-color: #F3E575;
+        /* background-color: #000; */
 
     }
 
@@ -27,6 +28,8 @@ $title = '簡單的餐點, 不簡單的味道; 一口希望, 是對生活的渴�
     .kv_top_img {
         padding: 0px;
         position: relative;
+        background: url(./img/circle.gif) center center no-repeat;
+        background-size: cover;
     }
 
     .kv_top_img>img {
