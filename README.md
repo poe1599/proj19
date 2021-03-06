@@ -1,8 +1,10 @@
-# MFEE 期中專題
+# MFEE 期中個人專題
 ## 希望峰食堂 餐飲營業網站
 
 ### 專案概述
-前後端均使用PHP開發
+前後端均使用PHP開發, 搭配Bootstrap4做排版
+
+### [專案截圖](https://github.com/poe1599/proj19/tree/main/img/screenPage)
 
 ### 網站功能
 * 會員註冊 / 登入 / 修改資料
