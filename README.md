@@ -11,5 +11,5 @@
 * 商品列表 / 分類 / 分頁 / 搜尋 / 加入購物車
 * 購物車 / 資料更動 / 結帳 / 紀錄查詢
 
-![首頁](/img/screenPage/screencapture-localhost-proj19-index-php-2021-03-06-21_47_01.png "首頁")
+![首頁](/img/screenPage/首頁.png "首頁")
 
